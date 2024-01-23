@@ -31,6 +31,7 @@ int	count_arguments(char **argv)
 		while (nums[j])
 		{
 			res = ft_atoi(nums[j++]);
+			(void)res;
 			arg_count++;
 		}
 		ft_free_split(nums);

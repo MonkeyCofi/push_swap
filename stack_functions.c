@@ -23,7 +23,6 @@ t_stack	*new_lst(void)
 		exit(EXIT_FAILURE);
 	}
 	new->next = NULL;
-	new->prev = NULL;
 	new->value = 0;
 	return (new);
 }
@@ -39,7 +38,6 @@ t_stack	*ft_newnode(int content)
 		exit(EXIT_FAILURE);
 	}
 	node->next = NULL;
-	node->prev = NULL;
 	node->value = content;
 	return (node);
 }

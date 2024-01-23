@@ -66,6 +66,12 @@ void	reverse_rotate(t_stack **stack)
 }
 
 
+/*
+ * set a node equal to the top of the stack
+ * set another node to be the last node of the stack
+ * set iter as top's new next
+ * set the stack to equal to stack->next
+ * */
 void	rotate(t_stack **stack)
 {
 	t_stack	*iter;
@@ -77,5 +83,11 @@ void	rotate(t_stack **stack)
 		iter = iter->next;
 	(*stack) = (*stack)->next;
 	iter->next = top;
-	iter->next = NULL;
+	top->next = NULL;
+}
+
+void	rr(t_stack **stack_a, t_stack **stack_b)
+{
+	rotate(stack_a);
+	rotate(stack_b);
 }

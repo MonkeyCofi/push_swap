@@ -40,5 +40,6 @@ void	swap(t_stack **stack);
 void	ss(t_stack **stack_a, t_stack **stack_b);
 void	push(t_stack **stack1, t_stack **stack2);
 void	rotate(t_stack **stack);
+void	reverse_rotate(t_stack **stack);
 
 #endif
