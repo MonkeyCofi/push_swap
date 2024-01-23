@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 19:22:51 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/23 21:07:08 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,39 @@ void	push(t_stack **stack1, t_stack **stack2)
 	new = ft_lstnew((*stack2)->value);
 	ft_lstadd_front(stack1, new);
 	delete_node(stack1, (*stack2));
+}
+
+/*
+* create a node that points to top of stack
+* while the node is not null
+* hehe reverse_rotate
+* 
+*/
+void	reverse_rotate(t_stack **stack)
+{
+	t_stack	*iter;
+	t_stack	*top;
+
+	iter = (*stack);
+	top = iter;
+	while (iter->next->next)
+		iter = iter->next;
+	(*stack) = iter->next;
+	(*stack)->next = top;
+	iter->next = NULL;
+}
+
+
+void	rotate(t_stack **stack)
+{
+	t_stack	*iter;
+	t_stack	*top;
+
+	iter = (*stack);
+	top = iter;
+	while (iter->next)
+		iter = iter->next;
+	(*stack) = (*stack)->next;
+	iter->next = top;
+	iter->next = NULL;
 }

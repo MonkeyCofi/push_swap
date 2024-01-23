@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:58:24 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 11:41:34 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:57:11 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_stack
 {
 	int				value;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }	t_stack;
 
 int		ft_isalpha(int c);
@@ -73,9 +72,9 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new);
 int		ft_lstsize(t_stack *lst);
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
-void	ft_lstdelone(t_stack *lst, void (*del)(void *));
-void	ft_lstclear(t_stack **lst, void (*del)(void *));
-void	ft_lstiter(t_stack *lst, void (*f)(void *));
-t_stack	*ft_lstmap(t_stack *lst, void *(*f)(void *), void (*del)(void *));
+void	ft_lstdelone(t_stack *lst, void (*del)(int));
+void	ft_lstclear(t_stack **lst, void (*del)(int));
+void	ft_lstiter(t_stack *lst, void (*f)(int));
+t_stack	*ft_lstmap(t_stack *lst, void *(*f)(int), void (*del)(int));
 
 #endif

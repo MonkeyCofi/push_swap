@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 18:34:15 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/23 20:50:53 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	delete_node(t_stack **stack, t_stack *del);
 void	swap(t_stack **stack);
 void	ss(t_stack **stack_a, t_stack **stack_b);
 void	push(t_stack **stack1, t_stack **stack2);
+void	rotate(t_stack **stack);
 
 #endif

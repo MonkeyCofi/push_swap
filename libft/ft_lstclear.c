@@ -6,13 +6,13 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:57:39 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 11:40:35 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:32:17 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_stack **lst, void (*del)(void *))
+void	ft_lstclear(t_stack **lst, void (*del)(int))
 {
 	t_stack	*curr;
 	t_stack	*next;

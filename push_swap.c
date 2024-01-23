@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 19:22:42 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/23 21:05:29 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int main(int argc, char **argv)
 	stack_b = NULL;
 	add_to_stack(&stack_a, argv);
 	print_stacks(stack_a, stack_b);
+	ft_printf("\n");
+	rotate(&stack_a);
 	print_stacks(stack_a, stack_b);
 	//add_to_stack(&stack_b, argv);
 	//ft_printf("\n");
