@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
+/*   Updated: 2024/01/23 18:34:15 by pipolint         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include "libft/libft.h"
+# include <stdio.h>
+
+//typedef struct s_stack
+//{
+//	struct s_stack	*prev;
+//	struct s_stack	*next;
+//	int				value;
+//}	t_stack;
+
+int		count_arguments(char **argv);
+void	add_to_stack(t_stack **stack, char **argv);
+
+// Stack functions
+t_stack	*new_lst(void);
+t_stack	*ft_newnode(int content);
+int		ft_stacksize(t_stack *lst);
+void	ft_lst_addback(t_stack **stack, t_stack *node);
+void	print_stacks(t_stack *stack1, t_stack *stack2);
+void	print_stack(t_stack *stack);
+void	delete_node(t_stack **stack, t_stack *del);
+
+// moves
+void	swap(t_stack **stack);
+void	ss(t_stack **stack_a, t_stack **stack_b);
+void	push(t_stack **stack1, t_stack **stack2);
+
+#endif
