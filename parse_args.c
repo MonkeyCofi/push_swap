@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:40 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 19:42:02 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 10:33:14 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ int	count_arguments(char **argv)
 	return (arg_count);
 }
 
+int	is_number(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (!ft_isdigit(arg[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 /*
 * go through each argument
 * use split in case the arguments are input as one singular string
@@ -67,8 +81,13 @@ void	add_to_stack(t_stack **stack, char **argv)
 			exit(EXIT_FAILURE);
 		while (nums[j])
 		{
-			node = ft_lstnew(ft_atoi(nums[j++]));
-			ft_lstadd_back(stack, node);
+			if (is_number(nums[j]))
+			{
+				node = ft_lstnew(ft_atoi(nums[j++]));
+				ft_lstadd_back(stack, node);
+			}
+			else
+				exit(EXIT_FAILURE);
 		}
 		ft_free_split(nums);
 	}

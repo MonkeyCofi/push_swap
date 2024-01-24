@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:09:42 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 18:38:32 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 10:29:51 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,13 @@ void	delete_node(t_stack **stack, t_stack *del)
 	t_stack	*iter;
 	t_stack	*tmp;
 
+	if (del->value == (*stack)->value)
+	{
+		tmp = (*stack);
+		(*stack) = (*stack)->next;
+		free(tmp);
+		return ;
+	}
 	iter = (*stack);
 	while (iter->next)
 	{
@@ -130,4 +137,5 @@ void	print_stacks(t_stack *stack1, t_stack *stack2)
 	}
 	ft_printf("%-15c%c\n", '-', '-');
 	ft_printf("%-15c%c", 'a', 'b');
+	ft_printf("\n");
 }

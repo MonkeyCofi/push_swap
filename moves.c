@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 21:07:08 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 10:19:51 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	push(t_stack **stack1, t_stack **stack2)
 		return ;
 	new = ft_lstnew((*stack2)->value);
 	ft_lstadd_front(stack1, new);
-	delete_node(stack1, (*stack2));
+	delete_node(stack2, (*stack2));
 }
 
 /*

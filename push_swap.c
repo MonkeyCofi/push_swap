@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 21:05:29 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 10:31:02 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,5 @@ int main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	add_to_stack(&stack_a, argv);
-	print_stacks(stack_a, stack_b);
-	ft_printf("\n");
-	add_to_stack(&stack_b, argv);	
-	print_stacks(stack_a, stack_b);
-	ft_printf("\n");
-	rr(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
 	(void)argc;
 }
