@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:45 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 12:24:14 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:51:21 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_stackadd_top(t_stack **stack, t_stack *node)
 {
-	if (!(*stack))
-		(*stack) = node;
 	node->next = (*stack);
 	(*stack) = node;
 }
