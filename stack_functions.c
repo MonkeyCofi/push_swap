@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:09:42 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 10:29:51 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:09:20 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,67 +75,27 @@ int	ft_stacksize(t_stack *lst)
 	return (size);
 }
 
-void	print_stack(t_stack *stack)
-{
-	while (stack)
-	{
-		ft_printf("%d\n", stack->value);
-		stack = stack->next;
-	}
-	ft_printf("-");
-}
-
-/*
-* traverse through the list until del value is found within node
-* use another node and assign it to the node before del node
-* set temp node to del node
-* set del node to del node's next
-* free temp_node
-* set prev node's next to current node
-*/
-void	delete_node(t_stack **stack, t_stack *del)
-{
-	t_stack	*prev;
-	t_stack	*iter;
-	t_stack	*tmp;
-
-	if (del->value == (*stack)->value)
-	{
-		tmp = (*stack);
-		(*stack) = (*stack)->next;
-		free(tmp);
-		return ;
-	}
-	iter = (*stack);
-	while (iter->next)
-	{
-		prev = iter;
-		iter = iter->next;
-		if (iter->value == del->value)
-		{
-			tmp = iter;
-			iter = iter->next;
-			free(tmp);
-			prev->next = iter;
-			return ;
-		}
-	}
-}
-
 void	print_stacks(t_stack *stack1, t_stack *stack2)
 {
-	while(stack1)
+	while (stack1 || stack2)
 	{
-		if (stack2)
+		if (stack1)
 		{
-			ft_printf("%-15d%d\n", stack1->value, stack2->value);
-			stack2 = stack2->next;
+			if (!stack2)
+				ft_printf("%d\n", stack1->value);
+			else
+				ft_printf("%-15d", stack1->value);
+			stack1 = stack1->next;
 		}
 		else
-			ft_printf("%-15d\n", stack1->value);
-		stack1 = stack1->next;
+			ft_printf("%-15c", ' ');
+		if (stack2)
+		{
+			ft_printf("%d\n", stack2->value);
+			stack2 = stack2->next;
+		}
 	}
 	ft_printf("%-15c%c\n", '-', '-');
 	ft_printf("%-15c%c", 'a', 'b');
-	ft_printf("\n");
+	ft_printf("\n\n");
 }
