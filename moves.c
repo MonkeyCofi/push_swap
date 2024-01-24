@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 10:55:50 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:26:26 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(t_stack **stack)
 {
 	int	temp;
 
-	if (ft_lstsize((*stack)) < 1)
+	if (ft_stacksize((*stack)) < 1)
 		return ;
 	temp = (*stack)->value;
 	(*stack)->value = (*stack)->next->value;
@@ -39,15 +39,15 @@ void	push(t_stack **stack1, t_stack **stack2)
 {
 	t_stack	*new;
 
-	if (!ft_lstsize(*stack2))
+	if (!ft_stacksize(*stack2))
 		return ;
-	new = ft_lstnew((*stack2)->value);
+	new = ft_newnode((*stack2)->value);
 	if (!(*stack2))
 	{
 		(*stack2) = new;
 		return ;
 	}
-	ft_lstadd_front(stack1, new);
+	ft_stackadd_top(stack1, new);
 	delete_node(stack2, (*stack2));
 }
 

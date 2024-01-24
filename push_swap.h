@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 12:16:06 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:26:01 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	add_to_stack(t_stack **stack, char **argv);
 t_stack	*new_lst(void);
 t_stack	*ft_newnode(int content);
 int		ft_stacksize(t_stack *lst);
+void	ft_stackadd_top(t_stack **stack, t_stack *node);
 void	ft_stackadd_back(t_stack **stack, t_stack *node);
 void	print_stacks(t_stack *stack1, t_stack *stack2);
 void	print_stack(t_stack *stack);
