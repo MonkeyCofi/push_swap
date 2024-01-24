@@ -27,12 +27,10 @@ int main(int argc, char **argv)
 	add_to_stack(&stack_a, argv);
 	print_stacks(stack_a, stack_b);
 	ft_printf("\n");
-	rotate(&stack_a);
+	add_to_stack(&stack_b, argv);	
 	print_stacks(stack_a, stack_b);
-	//add_to_stack(&stack_b, argv);
-	//ft_printf("\n");
-	//swap(&stack_a);
-	//print_stack(stack_a, stack_b);
-	(void)argv;
+	ft_printf("\n");
+	rr(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
 	(void)argc;
 }
