@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:40 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 12:10:04 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:12:46 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,9 @@ void	add_to_stack(t_stack **stack, char **argv)
 		{
 			if (is_number(nums[j], nums, stack))
 			{
-				node = ft_lstnew(ft_atoi(nums[j++]));
-				ft_lstadd_back(stack, node);
+				node = ft_newnode(ft_atoi(nums[j++]));
+				//ft_lstadd_back(stack, node);
+				ft_stackadd_back(stack, node);
 			}
 			else
 				exit(EXIT_FAILURE);

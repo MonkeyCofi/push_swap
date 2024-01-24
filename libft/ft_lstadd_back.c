@@ -6,15 +6,15 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 20:50:49 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 11:37:14 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:14:23 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_stack	*tmp;
+	t_list	*tmp;
 
 	if (!new)
 		return ;

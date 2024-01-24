@@ -6,26 +6,11 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:09:42 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 12:09:20 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:12:19 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_stack	*new_lst(void)
-{
-	t_stack	*new;
-
-	new = malloc(sizeof(t_stack));
-	if (!new)
-	{
-		perror(NULL);
-		exit(EXIT_FAILURE);
-	}
-	new->next = NULL;
-	new->value = 0;
-	return (new);
-}
 
 t_stack	*ft_newnode(int content)
 {
@@ -42,7 +27,7 @@ t_stack	*ft_newnode(int content)
 	return (node);
 }
 
-void	ft_lst_addback(t_stack **stack, t_stack *node)
+void	ft_stackadd_back(t_stack **stack, t_stack *node)
 {
 	t_stack	*iter;
 

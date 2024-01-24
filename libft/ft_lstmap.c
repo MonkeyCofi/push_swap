@@ -6,21 +6,21 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 20:30:52 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 19:37:27 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:15:01 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_stack	*ft_lstmap(t_stack *lst, void *(*f)(int), void (*del)(int))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(int), void (*del)(int))
 {
 	(void)lst;
 	(void)f;
 	(void)del;
 	return (NULL);
-	//t_stack	*new_lst;
-	//t_stack	*ptr;
-	//t_stack	*temp;
+	//t_list	*new_lst;
+	//t_list	*ptr;
+	//t_list	*temp;
 
 	//ptr = lst;
 	//new_lst = NULL;

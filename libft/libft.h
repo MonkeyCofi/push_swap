@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:58:24 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 19:57:11 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:15:46 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,16 @@
 # include "ft_printf/ft_printf.h"
 # include "get_next_line/get_next_line.h"
 
-typedef struct s_stack
+//typedef struct s_stack
+//{
+//	int				value;
+//	struct s_stack	*next;
+//}	t_stack;
+typedef struct s_list
 {
 	int				value;
-	struct s_stack	*next;
-}	t_stack;
+	struct s_list	*next;
+}	t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -67,14 +72,14 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_free_split(char **arr);
 
 // Bonus
-t_stack	*ft_lstnew(int value);
-void	ft_lstadd_front(t_stack **lst, t_stack *new);
-int		ft_lstsize(t_stack *lst);
-t_stack	*ft_lstlast(t_stack *lst);
-void	ft_lstadd_back(t_stack **lst, t_stack *new);
-void	ft_lstdelone(t_stack *lst, void (*del)(int));
-void	ft_lstclear(t_stack **lst, void (*del)(int));
-void	ft_lstiter(t_stack *lst, void (*f)(int));
-t_stack	*ft_lstmap(t_stack *lst, void *(*f)(int), void (*del)(int));
+t_list	*ft_lstnew(int value);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(int));
+void	ft_lstclear(t_list **lst, void (*del)(int));
+void	ft_lstiter(t_list *lst, void (*f)(int));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(int), void (*del)(int));
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 20:14:01 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/23 11:38:15 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:15:16 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_stack *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int	size;
 
