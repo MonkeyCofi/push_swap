@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:40 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 12:12:46 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:58:22 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ int	count_arguments(char **argv)
 * check if argument is a number
 * if it isn't a number, free double array and stack and return
 */
-int	is_number(char *arg, char **nums, t_stack **stack)
+static int	is_number(char *arg, char **nums, t_stack **stack)
 {
 	int	i;
 
 	(void)stack;
 	i = 0;
+	if (arg[i] == '+' || arg[i] == '-')
+		i++;
 	while (arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
@@ -67,10 +69,23 @@ int	is_number(char *arg, char **nums, t_stack **stack)
 * go through the stack
 * if there is an error, free stack and exit
 */
-int	is_duplicate(t_stack **stack)
+static void	check_for_duplicate(t_stack **stack, t_stack *node, char **nums)
 {
-	(void)stack;
-	return (1);
+	t_stack	*tmp;
+
+	tmp = (*stack);
+	while (tmp && ft_stacksize((*stack)) > 1)
+	{
+		if (node->value == tmp->value)
+		{
+			ft_putendl_fd("Duplicate found", 2);
+			free(node);
+			clear_stack(stack);
+			ft_free_split(nums);
+			exit(EXIT_FAILURE);
+		}
+		tmp = tmp->next;
+	}
 }
 
 /*
@@ -104,7 +119,7 @@ void	add_to_stack(t_stack **stack, char **argv)
 			if (is_number(nums[j], nums, stack))
 			{
 				node = ft_newnode(ft_atoi(nums[j++]));
-				//ft_lstadd_back(stack, node);
+				check_for_duplicate(stack, node, nums);
 				ft_stackadd_back(stack, node);
 			}
 			else
