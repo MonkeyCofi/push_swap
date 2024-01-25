@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 12:26:01 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:50:56 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
 void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
+
+// sort
+void	check_stacks(t_stack **a, t_stack **b);
 
 #endif

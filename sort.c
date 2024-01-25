@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/25 18:51:48 by pipolint         ###   ########.fr       */
+/*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
+/*   Updated: 2024/01/25 18:48:08 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+void	check_stacks(t_stack **a, t_stack **b)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-
-	if (argc < 3)
-		exit(EXIT_FAILURE);
-	stack_a = NULL;
-	stack_b = NULL;
-	add_to_stack(&stack_a, argv);
-	check_stacks(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	//push(&stack_b, &stack_a);
-	//clear_stack(&stack_a);
-	(void)argc;
+	(void)a;
+	(void)b;
 }
