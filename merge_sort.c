@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:33:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/25 19:41:23 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:03:50 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,11 @@ void	merge_sort(int a[])
 	return ;
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
-	char *str = NULL;
-	char *str2 = "there";
-	char *new = ft_strjoin(str, str2);
-	ft_printf("%s\n", new);
+	int i = -1;
+	while (argv[++i])
+
 	//int a[] = {90, 25, 65, 12, 2};
 	//int size = sizeof(a) / sizeof(int);
 	//print_array(a, size);

@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:40 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/25 19:55:36 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:58:34 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,6 @@ char	*join_args(char **argv)
 			joined = ft_strjoin(joined, argv[i]);
 		}
 		i++;
-		//if (joined)
-		//	free(joined);
-		//joined = ft_strjoin(joined, " ");
-		//if (joined)
-		//	free(joined);
-		//joined = ft_strjoin(joined, argv[i++]);
 	}
 	return (joined);
 }
