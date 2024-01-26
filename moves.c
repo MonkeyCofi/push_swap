@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 15:44:00 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/26 19:50:05 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(t_stack **stack)
 {
 	int	temp;
 
-	if (ft_stacksize((*stack)) < 1)
+	if (ft_stacksize((*stack)) < 2)
 		return ;
 	temp = (*stack)->value;
 	(*stack)->value = (*stack)->next->value;
@@ -39,7 +39,7 @@ void	push(t_stack **stack1, t_stack **stack2)
 {
 	t_stack	*new;
 
-	if (!ft_stacksize(*stack2))
+	if (is_empty((*stack2)))
 		return ;
 	new = ft_newnode((*stack2)->value);
 	if (!(*stack2))
@@ -65,6 +65,8 @@ void	reverse_rotate(t_stack **stack)
 	t_stack	*iter;
 	t_stack	*top;
 
+	if (is_empty(*stack))
+		return ;
 	iter = (*stack);
 	top = iter;
 	while (iter->next->next)
@@ -85,6 +87,8 @@ void	rotate(t_stack **stack)
 	t_stack	*iter;
 	t_stack	*top;
 
+	if (is_empty(*stack))
+		return ;
 	iter = (*stack);
 	top = iter;
 	while (iter->next)

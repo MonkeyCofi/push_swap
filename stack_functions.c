@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:09:42 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/26 11:39:11 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/26 20:16:48 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,11 @@ void	print_stacks(t_stack *stack1, t_stack *stack2)
 	ft_printf("%-15c%c\n", '-', '-');
 	ft_printf("%-15c%c", 'a', 'b');
 	ft_printf("\n\n");
+}
+
+t_stack	*get_lastnode(t_stack *stack)
+{
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
 }
