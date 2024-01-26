@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:45 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 15:51:21 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/26 19:45:10 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,22 @@ void	delete_node(t_stack **stack, t_stack *del)
 			return ;
 		}
 	}
+}
+
+t_stack	*pop(t_stack **stack)
+{
+	t_stack	*node;
+
+	node = ft_newnode((*stack)->value);
+	if (!node)
+		return (NULL);
+	delete_node(stack, (*stack));
+	return (node);
+}
+
+int	is_empty(t_stack *stack)
+{
+	if (ft_stacksize(stack) < 1)
+		return (1);
+	return (0);
 }

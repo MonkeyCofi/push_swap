@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:40 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/25 19:58:34 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/26 11:39:25 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,27 +80,27 @@ static void	check_for_duplicate(t_stack **stack, t_stack *node, char **nums)
 	}
 }
 
-char	*join_args(char **argv)
-{
-	char	*joined;
-	int		i;
+//char	*join_args(char **argv)
+//{
+//	char	*joined;
+//	int		i;
 
-	i = 1;
-	joined = NULL;
-	while (argv[i])
-	{
-		if (i == 1)
-			joined = ft_strjoin(argv[i], "");
-		else
-		{
-			joined = ft_strjoin(joined, " ");
-			free(joined);
-			joined = ft_strjoin(joined, argv[i]);
-		}
-		i++;
-	}
-	return (joined);
-}
+//	i = 1;
+//	joined = NULL;
+//	while (argv[i])
+//	{
+//		if (i == 1)
+//			joined = ft_strjoin(argv[i], "");
+//		else
+//		{
+//			joined = ft_strjoin(joined, " ");
+//			free(joined);
+//			joined = ft_strjoin(joined, argv[i]);
+//		}
+//		i++;
+//	}
+//	return (joined);
+//}
 
 /*
 * go through each argument
@@ -114,56 +114,55 @@ char	*join_args(char **argv)
 		** add the number as the next number in the stack
 * else if the current number already exists, return error
 */
-//void	add_to_stack(t_stack **stack, char **argv)
-//{
-//	t_stack	*node;
-//	char	**nums;
-//	int		i;
-//	int		j;
-
-//	i = 1;
-//	while (argv[i])
-//	{
-//		j = 0;
-//		nums = ft_split(argv[i++], " \"");
-//		if (!nums)
-//			exit(EXIT_FAILURE);
-//		while (nums[j])
-//		{
-//			if (is_number(nums[j], nums, stack))
-//			{
-//				node = ft_newnode(ft_atoi(nums[j++]));
-//				check_for_duplicate(stack, node, nums);
-//				ft_stackadd_back(stack, node);
-//			}
-//			else
-//				exit(EXIT_FAILURE);
-//		}
-//		ft_free_split(nums);
-//	}
-//}
-
-
 void	add_to_stack(t_stack **stack, char **argv)
 {
 	t_stack	*node;
 	char	**nums;
 	int		i;
-	char	*str;
+	int		j;
 
-	i = 0;
-	str = join_args(argv);
-	ft_printf("Str: %s\n", str);
-	nums = ft_split(str, " ");
-	while (nums[i])
+	i = 1;
+	while (argv[i])
 	{
-		if (is_number(nums[i], nums, stack))
+		j = 0;
+		nums = ft_split(argv[i++], " \"");
+		if (!nums)
+			exit(EXIT_FAILURE);
+		while (nums[j])
 		{
-			node = ft_newnode(ft_atoi(nums[i]));
-			check_for_duplicate(stack, node, nums);
-			ft_stackadd_back(stack, node);
+			if (is_number(nums[j], nums, stack))
+			{
+				node = ft_newnode(ft_atoi(nums[j++]));
+				check_for_duplicate(stack, node, nums);
+				ft_stackadd_back(stack, node);
+			}
+			else
+				exit(EXIT_FAILURE);
 		}
-		i++;
+		ft_free_split(nums);
 	}
-	ft_free_split(nums);
 }
+
+//void	add_to_stack(t_stack **stack, char **argv)
+//{
+//	t_stack	*node;
+//	char	**nums;
+//	int		i;
+//	char	*str;
+
+//	i = 0;
+//	str = join_args(argv);
+//	ft_printf("Str: %s\n", str);
+//	nums = ft_split(str, " ");
+//	while (nums[i])
+//	{
+//		if (is_number(nums[i], nums, stack))
+//		{
+//			node = ft_newnode(ft_atoi(nums[i]));
+//			check_for_duplicate(stack, node, nums);
+//			ft_stackadd_back(stack, node);
+//		}
+//		i++;
+//	}
+//	ft_free_split(nums);
+//}

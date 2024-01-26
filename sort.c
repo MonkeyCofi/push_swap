@@ -6,14 +6,25 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/25 18:48:08 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/26 19:29:09 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_stacks(t_stack **a, t_stack **b)
+/*
+* if 
+*/
+void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	(void)a;
-	(void)b;
+	t_stack	*trav;
+
+	trav = (*stack_a);
+	if (!(*stack_b))
+		push(stack_b, stack_a);
+	print_stacks(*stack_a, *stack_b);
+	while (trav)
+	{
+		return ;
+	}
 }

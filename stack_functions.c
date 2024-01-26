@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:09:42 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 15:50:42 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/26 11:39:11 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	print_stacks(t_stack *stack1, t_stack *stack2)
 			if (!stack2)
 				ft_printf("%d\n", stack1->value);
 			else
-				ft_printf("%-15d", stack1->value);
+				ft_printf("%-15d", stack1->value);;
 			stack1 = stack1->next;
 		}
 		else
