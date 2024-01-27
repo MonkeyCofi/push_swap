@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/26 16:57:06 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/27 19:12:31 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	add_to_stack(&stack_a, argv);
-	sort_stack(&stack_a, &stack_b);
+	//sort_stack(&stack_a, &stack_b);
 	print_stacks(stack_a, stack_b);
-	(void)argc;
 }
