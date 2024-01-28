@@ -6,27 +6,31 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 15:44:00 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:19:44 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **stack)
+void	swap(t_stack **stack, char stack_let, int ss)
 {
 	int	temp;
 
-	if (ft_stacksize((*stack)) < 1)
+	if (ft_stacksize((*stack)) < 2)
 		return ;
 	temp = (*stack)->value;
 	(*stack)->value = (*stack)->next->value;
 	(*stack)->next->value = temp;
+	if (stack_let == 'a' && !ss)
+		ft_putendl_fd("sa",1);
+	else if (stack_let == 'b' && !ss)
+		ft_putendl_fd("sb",1);
 }
 
 void	ss(t_stack **stack_a, t_stack **stack_b)
 {
-	swap(stack_a);
-	swap(stack_b);
+	swap(stack_a, 'a', 1);
+	swap(stack_b, 'a', 1);
 }
 
 /*
@@ -35,11 +39,11 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 * use lst_addfront to add the first node of stack2 to stack1
 * use lst_delone to remove from stack2
 */
-void	push(t_stack **stack1, t_stack **stack2)
+void	push(t_stack **stack1, t_stack **stack2, char stack)
 {
 	t_stack	*new;
 
-	if (!ft_stacksize(*stack2))
+	if (is_empty((*stack2)))
 		return ;
 	new = ft_newnode((*stack2)->value);
 	if (!(*stack2))
@@ -49,6 +53,10 @@ void	push(t_stack **stack1, t_stack **stack2)
 	}
 	ft_stackadd_top(stack1, new);
 	delete_node(stack2, (*stack2));
+	if (stack == 'a')
+		ft_putendl_fd("pa", 1);
+	else
+		ft_putendl_fd("pb", 1);
 }
 
 /*
@@ -60,11 +68,13 @@ void	push(t_stack **stack1, t_stack **stack2)
 * set stack's next node to top
 * set iter's next node to NULL
 */
-void	reverse_rotate(t_stack **stack)
+void	reverse_rotate(t_stack **stack, char stack_let, int rrr)
 {
 	t_stack	*iter;
 	t_stack	*top;
 
+	if (is_empty(*stack))
+		return ;
 	iter = (*stack);
 	top = iter;
 	while (iter->next->next)
@@ -72,6 +82,10 @@ void	reverse_rotate(t_stack **stack)
 	(*stack) = iter->next;
 	(*stack)->next = top;
 	iter->next = NULL;
+	if (stack_let == 'a' && !rrr)
+		ft_putendl_fd("rra", 1);
+	else if (stack_let == 'b' && !rrr)
+		ft_putendl_fd("rrb", 1);
 }
 
 /*
@@ -80,11 +94,13 @@ void	reverse_rotate(t_stack **stack)
  * set iter as top's new next
  * set the stack to equal to stack->next
  * */
-void	rotate(t_stack **stack)
+void	rotate(t_stack **stack, char stack_let, int rr)
 {
 	t_stack	*iter;
 	t_stack	*top;
 
+	if (is_empty(*stack))
+		return ;
 	iter = (*stack);
 	top = iter;
 	while (iter->next)
@@ -92,16 +108,20 @@ void	rotate(t_stack **stack)
 	(*stack) = (*stack)->next;
 	iter->next = top;
 	top->next = NULL;
+	if (stack_let == 'a' && !rr)
+		ft_putendl_fd("ra", 1);
+	else if (stack_let == 'b' && !rr)
+		ft_putendl_fd("rb", 1);
 }
 
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
-	rotate(stack_a);
-	rotate(stack_b);
+	rotate(stack_a, 'a', 1);
+	rotate(stack_b, 'b', 1);
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
+	reverse_rotate(stack_a, 'a', 1);
+	reverse_rotate(stack_b, 'b', 1);
 }

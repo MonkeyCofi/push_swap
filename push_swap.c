@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/25 18:51:48 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:19:21 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@ int main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	if (argc < 3)
-		exit(EXIT_FAILURE);
 	stack_a = NULL;
 	stack_b = NULL;
 	add_to_stack(&stack_a, argv);
-	check_stacks(&stack_a, &stack_b);
+	if (is_sorted(stack_a))
+	{
+		clear_stack(&stack_a);
+		exit(EXIT_SUCCESS);
+	}
+	if (ft_stacksize(stack_a) == 3)
+		sort_small_stack(&stack_a);
+	//sort_stack(&stack_a, &stack_b);
 	print_stacks(stack_a, stack_b);
-	//push(&stack_b, &stack_a);
-	//clear_stack(&stack_a);
+	clear_stack(&stack_a);
 	(void)argc;
 }

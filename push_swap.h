@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/25 16:50:56 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:18:37 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@
 typedef struct s_stack
 {
 	struct s_stack	*next;
-	int				value;
+	int			value;
 }	t_stack;
 
 int		count_arguments(char **argv);
 void	add_to_stack(t_stack **stack, char **argv);
 
 // Stack functions
+t_stack	*pop(t_stack **stack);
+int	is_empty(t_stack *stack);
 t_stack	*new_lst(void);
 t_stack	*ft_newnode(int content);
 int		ft_stacksize(t_stack *lst);
@@ -37,15 +39,21 @@ void	delete_node(t_stack **stack, t_stack *del);
 void	clear_stack(t_stack **stack);
 
 // moves
-void	swap(t_stack **stack);
+void	push(t_stack **stack1, t_stack **stack2, char stack);
+void	swap(t_stack **stack, char stack_let, int ss);
 void	ss(t_stack **stack_a, t_stack **stack_b);
-void	push(t_stack **stack1, t_stack **stack2);
-void	rotate(t_stack **stack);
-void	reverse_rotate(t_stack **stack);
+void	rotate(t_stack **stack, char stack_let, int rr);
+void	reverse_rotate(t_stack **stack, char stack_let, int rrr);
 void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 
 // sort
-void	check_stacks(t_stack **a, t_stack **b);
+void	sort_stack(t_stack **stack_a, t_stack **stack_b);
+void	sort_small_stack(t_stack **stack_a);
+
+// stack checkers
+int		is_sorted(t_stack *stack);
+int		get_smallest(t_stack *stack);
+int		get_largest(t_stack *stack);
 
 #endif
