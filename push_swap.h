@@ -50,6 +50,7 @@ void	rrr(t_stack **stack_a, t_stack **stack_b);
 // sort
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 void	sort_small_stack(t_stack **stack_a);
+void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b);
 
 // stack checkers
 int		is_sorted(t_stack *stack);

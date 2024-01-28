@@ -20,15 +20,11 @@ void	ft_stackadd_top(t_stack **stack, t_stack *node)
 
 void	clear_stack(t_stack **stack)
 {
-	t_stack	*iter;
-
-	if (!ft_stacksize((*stack)))
+	if (is_empty(*stack))
 		return ;
-	iter = (*stack);
-	while (iter)
+	while ((*stack))
 	{
-		delete_node(stack, iter);
-		iter = iter->next;
+		delete_node(stack, (*stack));
 	}
 }
 

@@ -79,7 +79,6 @@ static void	check_for_duplicate(t_stack **stack, t_stack *node, char **nums)
 	}
 }
 
-<<<<<<< HEAD
 char	*join_args(char **argv)
 {
 	char	*joined;
@@ -103,7 +102,6 @@ char	*join_args(char **argv)
 	}
 	return (joined);
 }
-=======
 //char	*join_args(char **argv)
 //{
 //	char	*joined;
@@ -125,7 +123,6 @@ char	*join_args(char **argv)
 //	}
 //	return (joined);
 //}
->>>>>>> refs/remotes/origin/master
 
 /*
 * go through each argument

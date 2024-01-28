@@ -42,6 +42,18 @@ void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b)
 
 	smallest = get_smallest((*stack_a));
 	largest = get_largest((*stack_b));
+	while (!is_sorted(*stack_a))
+	{
+		if (is_empty(*stack_b))
+		{
+			push(stack_b, stack_a, 'a');
+			push(stack_b, stack_a, 'a');
+		}
+		sort_small_stack(stack_a);
+	}
+	(void)smallest;
+	(void)largest;
+	(void)stack_a, (void)stack_b;
 }
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b)
@@ -63,4 +75,5 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 		//trav = trav->next;
 	}
 	(void)stack_b;
+	(void)smallest, (void)largest;
 }

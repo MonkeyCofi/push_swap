@@ -26,8 +26,12 @@ int main(int argc, char **argv)
 		exit(EXIT_SUCCESS);
 	}
 	if (ft_stacksize(stack_a) == 3)
+	{
 		sort_small_stack(&stack_a);
-	//sort_stack(&stack_a, &stack_b);
+		print_stacks(stack_a, stack_b);
+		exit(EXIT_SUCCESS);
+	}
+	sort_medium_stack(&stack_a, &stack_b);
 	print_stacks(stack_a, stack_b);
 	clear_stack(&stack_a);
 	(void)argc;
