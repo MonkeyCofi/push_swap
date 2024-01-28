@@ -39,7 +39,9 @@ int main(int argc, char **argv)
 {
 	int i = -1;
 	while (argv[++i])
-
+	{
+		ft_printf("%s\n", argv[i]);
+	}
 	//int a[] = {90, 25, 65, 12, 2};
 	//int size = sizeof(a) / sizeof(int);
 	//print_array(a, size);

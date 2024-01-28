@@ -83,6 +83,7 @@ static void	check_for_duplicate(t_stack **stack, t_stack *node, char **nums)
 char	*join_args(char **argv)
 {
 	char	*joined;
+	char	*temp;
 	int		i;
 
 	i = 1;
@@ -94,8 +95,9 @@ char	*join_args(char **argv)
 		else
 		{
 			joined = ft_strjoin(joined, " ");
-			free(joined);
-			joined = ft_strjoin(joined, argv[i]);
+			temp = joined;
+			joined = ft_strjoin(temp, argv[i]);
+			free(temp);
 		}
 		i++;
 	}
