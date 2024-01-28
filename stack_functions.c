@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:09:42 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/26 21:08:34 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/28 14:59:45 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_stackadd_back(t_stack **stack, t_stack *node)
 	if (!node)
 	{
 		perror(NULL);
-		return ;
+		exit(EXIT_FAILURE);
 	}
 	if (!(*stack))
 		(*stack) = node;

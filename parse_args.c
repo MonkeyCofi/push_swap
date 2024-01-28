@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:40 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/26 11:39:25 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/28 14:59:18 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static int	is_number(char *arg, char **nums, t_stack **stack)
 {
 	int	i;
 
-	(void)stack;
 	i = 0;
 	if (arg[i] == '+' || arg[i] == '-')
 		i++;
@@ -52,7 +51,7 @@ static int	is_number(char *arg, char **nums, t_stack **stack)
 		if (!ft_isdigit(arg[i]))
 		{
 			ft_free_split(nums);
-			ft_putendl_fd("Argument must only consist of numbers", 2);
+			ft_putendl_fd("Error", 2);
 			clear_stack(stack);
 			exit(EXIT_FAILURE);
 		}
@@ -70,7 +69,7 @@ static void	check_for_duplicate(t_stack **stack, t_stack *node, char **nums)
 	{
 		if (node->value == tmp->value)
 		{
-			ft_putendl_fd("Duplicate found", 2);
+			ft_putendl_fd("Error", 2);
 			free(node);
 			clear_stack(stack);
 			ft_free_split(nums);
@@ -125,19 +124,18 @@ void	add_to_stack(t_stack **stack, char **argv)
 	while (argv[i])
 	{
 		j = 0;
-		nums = ft_split(argv[i++], " \"");
+		nums = ft_split(argv[i++], " ");
 		if (!nums)
+		{
+			clear_stack(stack);
 			exit(EXIT_FAILURE);
+		}
 		while (nums[j])
 		{
-			if (is_number(nums[j], nums, stack))
-			{
-				node = ft_newnode(ft_atoi(nums[j++]));
-				check_for_duplicate(stack, node, nums);
-				ft_stackadd_back(stack, node);
-			}
-			else
-				exit(EXIT_FAILURE);
+			is_number(nums[j], nums, stack);
+			node = ft_newnode(ft_atoi(nums[j++]));
+			check_for_duplicate(stack, node, nums);
+			ft_stackadd_back(stack, node);
 		}
 		ft_free_split(nums);
 	}

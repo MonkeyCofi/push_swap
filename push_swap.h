@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/27 19:15:06 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:18:37 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,17 @@ void	delete_node(t_stack **stack, t_stack *del);
 void	clear_stack(t_stack **stack);
 
 // moves
-void	push(t_stack **stack1, t_stack **stack62);
-void	swap(t_stack **stack);
+void	push(t_stack **stack1, t_stack **stack2, char stack);
+void	swap(t_stack **stack, char stack_let, int ss);
 void	ss(t_stack **stack_a, t_stack **stack_b);
-void	rotate(t_stack **stack);
-void	reverse_rotate(t_stack **stack);
+void	rotate(t_stack **stack, char stack_let, int rr);
+void	reverse_rotate(t_stack **stack, char stack_let, int rrr);
 void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 
 // sort
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
+void	sort_small_stack(t_stack **stack_a);
 
 // stack checkers
 int		is_sorted(t_stack *stack);

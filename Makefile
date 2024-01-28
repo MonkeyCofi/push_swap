@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRCS = push_swap.c parse_args.c stack_functions.c stack_functions2.c moves.c sort.c
+SRCS = push_swap.c parse_args.c stack_functions.c stack_functions2.c moves.c sort.c check_stacks.c
 
 LIBFT = ./libft/libft.a
 
@@ -18,8 +18,11 @@ $(LIBFT):
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@
 
+#$(NAME): $(OBJS) $(LIBFT)
+#	cc $(CFLAGS) $(LIBFT) $^ -o $(NAME)
 $(NAME): $(OBJS) $(LIBFT)
 	cc $(CFLAGS) $(LIBFT) $^ -o $(NAME)
+	make clean
 
 clean:
 	make -C $(LIBFT_DIR) clean
