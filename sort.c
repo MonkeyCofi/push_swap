@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/28 19:18:32 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:35:47 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	sort_small_stack(t_stack **stack_a)
 		else if ((*stack_a)->value == largest)
 			rotate(stack_a, 'a', 0);
 		else if ((*stack_a)->value == smallest)
-			rotate(stack_a, 'a', 0);
+			reverse_rotate(stack_a, 'a', 0);
 	}
 }
 
@@ -41,19 +41,19 @@ void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b)
 	int	largest;
 
 	smallest = get_smallest((*stack_a));
-	largest = get_largest((*stack_b));
+	largest = get_largest((*stack_a));
 	while (!is_sorted(*stack_a))
 	{
 		if (is_empty(*stack_b))
 		{
-			push(stack_b, stack_a, 'a');
-			push(stack_b, stack_a, 'a');
+			push(stack_b, stack_a, 'b');
+			push(stack_b, stack_a, 'b');
 		}
 		sort_small_stack(stack_a);
+		if (((*stack_b)->value == largest && (*stack_b)->next->value == smallest) || (*stack_b)->value < (*stack_a)->value
+			|| (*stack_b)->value == largest)
+			push(stack_a, stack_b, 'a');
 	}
-	(void)smallest;
-	(void)largest;
-	(void)stack_a, (void)stack_b;
 }
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b)

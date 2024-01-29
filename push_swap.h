@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/28 19:18:37 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:17:49 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	print_stacks(t_stack *stack1, t_stack *stack2);
 void	print_stack(t_stack *stack);
 void	delete_node(t_stack **stack, t_stack *del);
 void	clear_stack(t_stack **stack);
+t_stack	*get_lastnode(t_stack *stack);
 
 // moves
 void	push(t_stack **stack1, t_stack **stack2, char stack);

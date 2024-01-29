@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:45 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/26 19:45:10 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/29 12:07:10 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void	clear_stack(t_stack **stack)
 	if (is_empty(*stack))
 		return ;
 	while ((*stack))
-	{
 		delete_node(stack, (*stack));
-	}
 }
 
 /*
