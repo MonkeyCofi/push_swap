@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   median.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/30 16:06:24 by pipolint         ###   ########.fr       */
+/*   Created: 2024/01/30 18:12:07 by pipolint          #+#    #+#             */
+/*   Updated: 2024/01/30 20:36:37 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int	*array(t_stack *stack)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	int	*array;
+	int	index;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	add_to_stack(&stack_a, argv);
-	if (!is_sorted(stack_a))
+	array = malloc((ft_stacksize(stack)) * sizeof(int));
+	index = 0;
+	if (!array)
+		exit(EXIT_FAILURE);
+	while (stack)
 	{
-		if (ft_stacksize(stack_a) == 3)
-			sort_small_stack(&stack_a);
-		else
-			sort_medium_stack(&stack_a, &stack_b);
+		array[index++] = stack->value;
+		stack = stack->next;
 	}
-	print_stacks(stack_a, stack_b);
-	ft_printf("stack is sorted\n");
-	clear_stack(&stack_a);
-	exit(EXIT_SUCCESS);
-	(void)argc;
+	return (array);
+}
+
+int	nth_smallest(int *array, int index)
+{
+	
+}
+/*
+* 
+*/
+int	select(int *array, int *left, int *right, int index)
+{
+	
 }

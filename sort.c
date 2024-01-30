@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/29 16:35:47 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:43:33 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b)
 
 	smallest = get_smallest((*stack_a));
 	largest = get_largest((*stack_a));
-	while (!is_sorted(*stack_a))
+	while (!is_sorted(*stack_a) || !is_empty(*stack_b))
 	{
 		if (is_empty(*stack_b))
 		{
@@ -51,40 +51,69 @@ void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b)
 		}
 		if (ft_stacksize(*stack_a) == 3)
 			sort_small_stack(stack_a);
-		// if (((*stack_b)->value == largest && (*stack_b)->next->value == smallest) || (*stack_b)->value < (*stack_a)->value
-			// || (*stack_b)->value == largest)
-			// push(stack_a, stack_b, 'a');
-		if ((*stack_b)->value != largest && (*stack_b)->value != smallest)
+		if ((*stack_b)->value == largest && (*stack_b))
 		{
-			if ((*stack_b)->value > (*stack_a)->next->value)
-				reverse_rotate(stack_a, 'a', 0);
-			else
-				rotate(stack_a, 'a', 0);
+			push(stack_a, stack_b, 'a');
+			rotate(stack_a, 'a', 0);
 		}
-		if ((*stack_a)->value == largest)
+		else if (((*stack_b)->value == smallest || (*stack_b)->value > (*stack_a)->value) && (*stack_b))
+		{
+			push(stack_a, stack_b, 'a');
+		}
+		else
+		{
+			push(stack_a, stack_b, 'a');
 			swap(stack_a, 'a', 0);
-		push(stack_a, stack_b, 'a');
+		}
 	}
 }
 
-void	sort_stack(t_stack **stack_a, t_stack **stack_b)
+//void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b)
+//{
+//	int	smallest;
+//	int	largest;
+
+//	smallest = get_smallest((*stack_a));
+//	largest = get_largest((*stack_a));
+//	while (!is_sorted(*stack_a))
+//	{
+//		if (is_empty(*stack_b) && ft_stacksize(*stack_a) > 3)
+//		{
+//			push(stack_b, stack_a, 'b');
+//			push(stack_b, stack_a, 'b');
+//		}
+//		if (ft_stacksize(*stack_a) == 3)
+//		{
+//			sort_small_stack(stack_a);
+//			if (is_sorted(*stack_a) && is_empty(*stack_b))
+//				return ;
+//		}
+//		if (((*stack_b)->value != largest && (*stack_b)->value != smallest) || ft_stacksize(*stack_b) == 1)
+//		{
+//			if ((*stack_b)->value > (*stack_a)->next->value && (*stack_b)->value < get_lastnode(*stack_a)->value)
+//				reverse_rotate(stack_a, 'a', 0);
+//			else if ((*stack_b)->value < (*stack_a)->value)
+//				rotate(stack_a, 'a', 0);
+//		}
+//		push(stack_a, stack_b, 'a');
+//	}
+//}
+
+t_stack	*search_node(t_stack *stack, int number)
 {
-	t_stack	*trav;
-	int		smallest;
-	int		largest;
-
-	trav = (*stack_a);
-	smallest = get_smallest(*stack_a);
-	largest = get_largest(*stack_a);
-	while (trav && !is_sorted(*stack_a))
+	while (stack)
 	{
-		return ;
-		//while ((*stack_a)->value < (*stack_b)->value)
-		//{
-		//	push(stack_b, stack_a, 'b');
-		//}
-		//trav = trav->next;
+		if (stack->value == number)
+			return (stack);
+		stack = stack->next;
 	}
-	(void)stack_b;
-	(void)smallest, (void)largest;
+	return (NULL);
 }
+
+//void	push_last(t_stack **stack_a, t_stack **stack_b)
+//{
+//	if (!is_empty(*stack_b))
+//		push(stack_a, stack_b, 'b');
+//	if (is_sorted((*stack_a)->next))
+//		rotate(stack_a, 'a', 0);
+//}
