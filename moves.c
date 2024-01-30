@@ -31,6 +31,7 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(stack_a, 'a', 1);
 	swap(stack_b, 'a', 1);
+	ft_putendl_fd("ss", 1);
 }
 
 /*
@@ -118,10 +119,12 @@ void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a, 'a', 1);
 	rotate(stack_b, 'b', 1);
+	ft_putendl_fd("rr", 1);
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	reverse_rotate(stack_a, 'a', 1);
 	reverse_rotate(stack_b, 'b', 1);
+	ft_putendl_fd("rrr", 1);
 }

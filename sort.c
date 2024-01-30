@@ -49,10 +49,21 @@ void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b)
 			push(stack_b, stack_a, 'b');
 			push(stack_b, stack_a, 'b');
 		}
-		sort_small_stack(stack_a);
-		if (((*stack_b)->value == largest && (*stack_b)->next->value == smallest) || (*stack_b)->value < (*stack_a)->value
-			|| (*stack_b)->value == largest)
-			push(stack_a, stack_b, 'a');
+		if (ft_stacksize(*stack_a) == 3)
+			sort_small_stack(stack_a);
+		// if (((*stack_b)->value == largest && (*stack_b)->next->value == smallest) || (*stack_b)->value < (*stack_a)->value
+			// || (*stack_b)->value == largest)
+			// push(stack_a, stack_b, 'a');
+		if ((*stack_b)->value != largest && (*stack_b)->value != smallest)
+		{
+			if ((*stack_b)->value > (*stack_a)->next->value)
+				reverse_rotate(stack_a, 'a', 0);
+			else
+				rotate(stack_a, 'a', 0);
+		}
+		if ((*stack_a)->value == largest)
+			swap(stack_a, 'a', 0);
+		push(stack_a, stack_b, 'a');
 	}
 }
 
