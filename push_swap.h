@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/30 12:24:24 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:53:54 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 void	sort_small_stack(t_stack **stack_a);
 void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b);
 t_stack	*search_node(t_stack *stack, int number);
+void	move_stack(t_stack **stack, int largest, int smallest);
 
 // stack checkers
 int		is_sorted(t_stack *stack);
