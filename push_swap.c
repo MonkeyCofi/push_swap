@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/31 17:20:02 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:16:07 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		else
 			sort_medium_stack(&stack_a, &stack_b);
 	}
-	//print_stacks(stack_a, stack_b);
+	print_stacks(stack_a, stack_b);
 	//ft_printf("stack is sorted\n");
 	clear_stack(&stack_a);
 	exit(EXIT_SUCCESS);
