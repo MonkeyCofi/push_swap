@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/04 12:05:50 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 02:45:08 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,68 +65,49 @@ void	sort_small_stack(t_stack **stack_a)
 //	}
 //}
 
-t_stack	*search_node(t_stack *stack, int number)
+void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	while (stack)
+	int	smallest;
+	int	largest;
+	int	second_largest;
+
+	smallest = get_smallest((*stack_a));
+	largest = get_largest((*stack_a));
+	second_largest = get_second_largest(*stack_a, largest, smallest);
+	if (is_empty(*stack_b))
 	{
-		if (stack->value == number)
-			return (stack);
-		stack = stack->next;
+		push(stack_b, stack_a, 'b');
+		push(stack_b, stack_a, 'b');
 	}
-	return (NULL);
+	sort_small_stack(stack_a);
+	while (!is_sorted(*stack_a) || !is_empty(*stack_b))
+	{
+		push(stack_a, stack_b, 'a');
+		if ((*stack_b) && (*stack_b)->value == second_largest && (*stack_a)->value == largest)
+			push(stack_a, stack_b, 'a');
+		move_stack(stack_a, largest, smallest);
+	}
 }
 
-//void	push_last(t_stack **stack_a, t_stack **stack_b)
-//{
-//	if (!is_empty(*stack_b))
-//		push(stack_a, stack_b, 'b');
-//	if (is_sorted((*stack_a)->next))
-//		rotate(stack_a, 'a', 0);
-//}
-
-// void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b)
-// {
-// 	int	smallest;
-// 	int	largest;
-// 	int	second_largest;
-
-// 	smallest = get_smallest((*stack_a));
-// 	largest = get_largest((*stack_a));
-// 	second_largest = get_second_largest(*stack_a, largest, smallest);
-// 	if (is_empty(*stack_b))
-// 	{
-// 		push(stack_b, stack_a, 'b');
-// 		push(stack_b, stack_a, 'b');
-// 	}
-// 	sort_small_stack(stack_a);
-// 	while (!is_sorted(*stack_a) || !is_empty(*stack_b))
-// 	{
-// 		push(stack_a, stack_b, 'a');
-// 		if ((*stack_b) && (*stack_b)->value == second_largest && (*stack_a)->value == largest)
-// 			push(stack_a, stack_b, 'a');
-// 		move_stack(stack_a, largest, second_largest, smallest);
-// 	}
-// }
-
-// void	move_stack(t_stack **stack, int largest, int smallest)
-// {
-// 	if (is_sorted(*stack))
-// 		return ;
-// 	if ((*stack)->value != largest && (*stack)->value > (*stack)->next->value && (*stack)->value != get_largest(*stack))
-// 		swap(stack, 'a', 0);
-// 	else if (ft_stacksize(find_node(*stack, smallest)) <= 2)
-// 		reverse_rotate(stack, 'a', 0);
-// 	else if ((*stack)->value > (*stack)->next->value && (*stack)->next->value != smallest)
-// 	{
-// 		reverse_rotate(stack, 'a', 0);
-// 	}
-// 	else
-// 	{
-// 		rotate(stack, 'a', 0);
-// 	}
-// 	if ((*stack)->value == largest && (*stack)->next->value == smallest)
-// 		rotate(stack, 'a', 0);
-// }
+void	move_stack(t_stack **stack, int largest, int smallest)
+{
+	if (is_sorted(*stack))
+		return ;
+	if ((*stack)->value != largest && (*stack)->value > (*stack)->next->value && (*stack)->value != get_largest(*stack))
+		swap(stack, 'a', 0);
+	else if (ft_stacksize(find_node(*stack, smallest)) <= 2)
+		reverse_rotate(stack, 'a', 0);
+	else if ((*stack)->value > (*stack)->next->value && (*stack)->next->value != smallest)
+	{
+		reverse_rotate(stack, 'a', 0);
+	}
+	else
+	{
+		rotate(stack, 'a', 0);
+	}
+	if ((*stack)->value == largest && (*stack)->next->value == smallest)
+		rotate(stack, 'a', 0);
+}
 
 // void	move_stack(t_stack **a, int largest, int second_largest, int smallest)
 // {
@@ -151,26 +132,11 @@ t_stack	*search_node(t_stack *stack, int number)
 
 // }
 
-void	sort_medium_stack(t_stack **a, t_stack **b)
+void	sort_large(t_stack **a, t_stack **b, int size)
 {
-	int	smallest;
-	int	largest;
+	int	pivot;
+	int	*arr;
 
-	largest = get_largest(*a);
-	smallest = get_smallest(*a);
-	push(b, a, 'b');
-	push(b, a, 'b');
-	sort_small_stack(a);
-	while (!is_sorted(*a) || !is_empty(*b))
-	{
-		push(a, b, 'a');
-	}
-}
-
-
-void	move_stack(t_stack **s, int largest, int smallest)
-{
-	if (is_sorted(*s))
-		return ;
-	
+	arr = arrayify(*a);
+	pivot = mofm(arr, size);
 }

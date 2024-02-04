@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:14:23 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/04 03:01:06 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 02:40:20 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,15 @@ int	get_larger_value(t_stack *stack, int value)
 		stack = stack->next;
 	}
 	return (target);
+}
+
+t_stack	*search_node(t_stack *stack, int number)
+{
+	while (stack)
+	{
+		if (stack->value == number)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }
