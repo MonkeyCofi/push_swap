@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_stacks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:14:23 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/01 16:44:28 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/04 03:01:06 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int	is_sorted(t_stack *stack)
 {
 	t_stack	*next;
-	
+
 	if (ft_stacksize(stack) < 2)
 		return (1);
 	next = stack->next;
@@ -62,4 +62,32 @@ int	get_largest(t_stack *stack)
 		stack = stack->next;
 	}
 	return (largest_val);
+}
+
+int	get_second_largest(t_stack *stack, int largest, int smallest)
+{
+	int	second;
+
+	second = smallest;
+	while (stack)
+	{
+		if (stack->value > second && stack->value < largest)
+			second = stack->value;
+		stack = stack->next;
+	}
+	return (second);
+}
+
+int	get_larger_value(t_stack *stack, int value)
+{
+	int	target;
+
+	target = get_largest(stack);
+	while (stack)
+	{
+		if (stack->value > value && stack->value < target)
+			target = stack->value;
+		stack = stack->next;
+	}
+	return (target);
 }

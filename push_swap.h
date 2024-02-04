@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/01 16:07:12 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/04 02:55:59 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,13 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 void	sort_small_stack(t_stack **stack_a);
 void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b);
 t_stack	*search_node(t_stack *stack, int number);
-void	move_stack(t_stack **stack, int largest, int smallest);
+void	move_stack(t_stack **a, int largest, int second_largest, int smallest);
 
 // stack checkers
 int		is_sorted(t_stack *stack);
 int		get_smallest(t_stack *stack);
 int		get_largest(t_stack *stack);
+int		get_second_largest(t_stack *stack, int largest, int smallest);
+int		get_larger_value(t_stack *stack, int value);
 
 #endif
