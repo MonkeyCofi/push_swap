@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:09:42 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/28 14:59:45 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:17:48 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	print_stacks(t_stack *stack1, t_stack *stack2)
 			if (!stack2)
 				ft_printf("%d\n", stack1->value);
 			else
-				ft_printf("%-15d", stack1->value);;
+				ft_printf("%-15d", stack1->value);
 			stack1 = stack1->next;
 		}
 		else

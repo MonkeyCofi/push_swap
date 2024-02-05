@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:12:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 17:13:55 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:04:09 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,59 +30,6 @@ int	*arrayify(t_stack *stack)
 		stack = stack->next;
 	}
 	return (arr);
-}
-
-// sor the array
-// return the middle element of the array
-int	get_median(int *arr, int n)
-{
-	int	i;
-	int	j;
-	int	temp;
-
-	i = 0;
-	j = 0;
-	while (i < n)
-	{
-		while (j < n - i - 1)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
-			}
-			j++;
-		}
-		i++;
-	}
-	if (n % 2 == 1)
-		return (arr[n / 2]);
-	return ((arr[n / 2 - 1] + arr[n / 2]) / 2);
-}
-
-int	mofm(int *arr, int n)
-{
-	int		median;
-	int		*medians;
-	double	n_medians;
-	int		i;
-
-	if (n <= 5)
-		return (get_median(arr, n));
-	n_medians = n / 5;
-	i = 0;
-	medians = malloc(sizeof(int) * n_medians);
-	if (!medians)
-		exit(EXIT_FAILURE);
-	while (i < n_medians)
-	{
-		medians[i] = get_median(arr + i * 5, 5);
-		i++;
-	}
-	median = mofm(medians, n_medians);
-	free(medians);
-	return (median);
 }
 
 int	partition(int *arr, int left, int right)
@@ -112,10 +59,6 @@ int	partition(int *arr, int left, int right)
 	return (i + 1);
 }
 
-/*
-** put the pivot element in its right place
-** if k is 
-*/
 int	quick_select(int *arr, int left, int right, int k)
 {
 	int	p;
@@ -140,7 +83,7 @@ int	get_kth_smallest(t_stack *stack, int k)
 	arr = arrayify(stack);
 	if (!arr)
 		exit(EXIT_FAILURE);
-	target = quick_select(arr, 0, ft_stacksize(stack), k);
+	target = quick_select(arr, 0, ft_stacksize(stack) - 1, k);
 	free(arr);
 	return (target);
 }

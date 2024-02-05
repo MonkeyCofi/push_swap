@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 16:56:21 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:04:42 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 typedef struct s_stack
 {
 	struct s_stack	*next;
-	int			value;
+	int				pos;
+	int				value;
 }	t_stack;
 
 int		count_arguments(char **argv);

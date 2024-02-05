@@ -1,11 +1,11 @@
 NAME = push_swap
 
 SRCS = push_swap.c parse_args.c stack_functions.c stack_functions2.c moves.c sort.c check_stacks.c \
-		median.c
-
-LIBFT = ./libft/libft.a
+		median.c moves2.c
 
 LIBFT_DIR = ./libft/
+
+LIBFT = $(LIBFT_DIR)libft.a
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 13:30:46 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:16:31 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,6 @@ void	push(t_stack **stack1, t_stack **stack2, char stack)
 	else
 		ft_putendl_fd("pb", 1);
 }
-
-// point stack b to stack a
-// point stack a to next
-// void	push(t_stack **push_to, t_stack **push_from, char stack_let)
-// {
-// 	t_stack	*temp;
-
-// 	temp = (*push_to);
-// 	*push_to = (*push_to)->next;
-// 	(*push_from) = temp;
-// 	if (stack_let == 'a')
-// 		ft_putendl_fd("pa", 1);
-// 	else
-// 		ft_putendl_fd("pb", 1);
-// }
 
 /*
 * create a node that points to top of stack
@@ -128,18 +113,4 @@ void	rotate(t_stack **stack, char stack_let, int rr)
 		ft_putendl_fd("ra", 1);
 	else if (stack_let == 'b' && !rr)
 		ft_putendl_fd("rb", 1);
-}
-
-void	rr(t_stack **stack_a, t_stack **stack_b)
-{
-	rotate(stack_a, 'a', 1);
-	rotate(stack_b, 'b', 1);
-	ft_putendl_fd("rr", 1);
-}
-
-void	rrr(t_stack **stack_a, t_stack **stack_b)
-{
-	reverse_rotate(stack_a, 'a', 1);
-	reverse_rotate(stack_b, 'b', 1);
-	ft_putendl_fd("rrr", 1);
 }

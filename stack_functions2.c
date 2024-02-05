@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_functions2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:45 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/01 16:06:51 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:20:15 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,6 @@ void	delete_node(t_stack **stack, t_stack *del)
 //	delete_node(stack, (*stack));
 //	return (node);
 //}
-
-t_stack	*find_node(t_stack *stack, int value)
-{
-	while (stack)
-	{
-		if (stack->value == value)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
-}
 
 int	is_empty(t_stack *stack)
 {
