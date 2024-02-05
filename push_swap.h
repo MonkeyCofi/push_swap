@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 19:04:42 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:46:52 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	add_to_stack(t_stack **stack, char **argv);
 
 // Stack functions
 //t_stack	*pop(t_stack **stack);
-int	is_empty(t_stack *stack);
+int		is_empty(t_stack *stack);
 t_stack	*new_lst(void);
-t_stack	*ft_newnode(int content);
+t_stack	*ft_newnode(int content, int index);
 int		ft_stacksize(t_stack *lst);
 void	ft_stackadd_top(t_stack **stack, t_stack *node);
 void	ft_stackadd_back(t_stack **stack, t_stack *node);
@@ -38,7 +38,7 @@ void	print_stacks(t_stack *stack1, t_stack *stack2);
 void	delete_node(t_stack **stack, t_stack *del);
 void	clear_stack(t_stack **stack);
 t_stack	*get_lastnode(t_stack *stack);
-t_stack	*find_node(t_stack *stack, int value);
+t_stack	*get_node(t_stack *node, int value);
 
 // moves
 void	push(t_stack **stack1, t_stack **stack2, char stack);
@@ -71,5 +71,8 @@ int		*arrayify(t_stack *stack);
 int		partition(int *arr, int left, int right);
 int		quick_select(int *arr, int left, int right, int k);
 int		get_kth_smallest(t_stack *stack, int k);
+
+// sort utils
+int		find_smallest_largest(t_stack *stack, int value);
 
 #endif

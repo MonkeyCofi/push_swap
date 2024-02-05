@@ -6,13 +6,13 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:09:42 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 19:17:48 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:25:42 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_newnode(int content)
+t_stack	*ft_newnode(int content, int index)
 {
 	t_stack	*node;
 
@@ -24,6 +24,7 @@ t_stack	*ft_newnode(int content)
 	}
 	node->next = NULL;
 	node->value = content;
+	node->pos = index;
 	return (node);
 }
 

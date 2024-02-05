@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 19:12:12 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:53:48 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,10 @@ void	move_stack(t_stack **stack, int largest, int smallest)
 		return ;
 	if ((*stack)->value != largest && (*stack)->value > (*stack)->next->value && (*stack)->value != get_largest(*stack))
 		swap(stack, 'a', 0);
-	else if (ft_stacksize(find_node(*stack, smallest)) <= 2)
-		reverse_rotate(stack, 'a', 0);
 	else if ((*stack)->value > (*stack)->next->value && (*stack)->next->value != smallest)
-	{
 		reverse_rotate(stack, 'a', 0);
-	}
 	else
-	{
 		rotate(stack, 'a', 0);
-	}
 	if ((*stack)->value == largest && (*stack)->next->value == smallest)
 		rotate(stack, 'a', 0);
 }
@@ -143,12 +137,22 @@ void	sort_large(t_stack **a, t_stack **b)
 	int	midpoint;
 
 	median = get_kth_smallest(*a, ft_stacksize(*a) / 2);
+	ft_printf("The median is %d\n", median);
 	midpoint = ft_stacksize(*a) / 2;
-	while ((*a))
+	int i = 0;
+	while (!is_sorted((*a)) || is_empty(*b))
 	{
 		if ((*a)->value <= median)
 			push(b, a, 'b');
-		else if ()
+		// rotate if the position is above the median
+		else
+		{
 			rotate(a, 'a', 0);
+		}
+		// otherwise reverse rotate
+		if (i++ > 10)
+			break ;
 	}
+	(void)b;
+	(void)midpoint;
 }

@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves2.c                                           :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 19:16:34 by uwubuntu          #+#    #+#             */
-/*   Updated: 2024/02/05 19:37:22 by uwubuntu         ###   ########.fr       */
+/*   Created: 2024/02/05 20:43:04 by uwubuntu          #+#    #+#             */
+/*   Updated: 2024/02/05 20:47:32 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void	rr(t_stack **stack_a, t_stack **stack_b)
+int	find_smallest_largest(t_stack *stack, int value)
 {
-	rotate(stack_a, 'a', 1);
-	rotate(stack_b, 'b', 1);
-	ft_putendl_fd("rr", 1);
-}
+	int	largest;
 
-void	rrr(t_stack **stack_a, t_stack **stack_b)
-{
-	reverse_rotate(stack_a, 'a', 1);
-	reverse_rotate(stack_b, 'b', 1);
-	ft_putendl_fd("rrr", 1);
-}
-
-t_stack	*get_node(t_stack *node, int value)
-{
-	while (node)
+	largest = get_largest(stack);
+	while (stack)
 	{
-		if (node->value == value)
-			return (node);
-		node = node->next;
+		if (stack->value > value && stack->value < largest)
+			largest = stack->value;	// if the value is greater than value but lesser than largest
+		stack = stack->next;
 	}
-	return (NULL);
+	return (largest);
 }

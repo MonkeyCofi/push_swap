@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 19:16:31 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:33:48 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	push(t_stack **stack1, t_stack **stack2, char stack)
 
 	if (is_empty((*stack2)))
 		return ;
-	new = ft_newnode((*stack2)->value);
+	new = ft_newnode((*stack2)->value, 0);
 	// if (!(*stack1))
 	// {
 	// 	(*stack1) = new;

@@ -1,7 +1,7 @@
 NAME = push_swap
 
 SRCS = push_swap.c parse_args.c stack_functions.c stack_functions2.c moves.c sort.c check_stacks.c \
-		median.c moves2.c
+		median.c moves2.c sort_utils.c
 
 LIBFT_DIR = ./libft/
 

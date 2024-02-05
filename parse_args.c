@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:40 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 13:11:33 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:31:14 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,10 @@ void	add_to_stack(t_stack **stack, char **argv)
 	char	**nums;
 	int		i;
 	int		j;
+	int		index;
 
 	i = 1;
+	index = 0;
 	while (argv[i])
 	{
 		j = 0;
@@ -156,7 +158,7 @@ void	add_to_stack(t_stack **stack, char **argv)
 		while (nums[j])
 		{
 			is_number(nums[j], nums, stack);
-			node = ft_newnode(ft_atoi(nums[j++]));
+			node = ft_newnode(ft_atoi(nums[j++]), index++);
 			check_for_duplicate(stack, node, nums);
 			ft_stackadd_back(stack, node);
 		}
