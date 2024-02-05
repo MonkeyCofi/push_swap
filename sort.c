@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 02:45:08 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:18:41 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,11 +132,36 @@ void	move_stack(t_stack **stack, int largest, int smallest)
 
 // }
 
-void	sort_large(t_stack **a, t_stack **b, int size)
-{
-	int	pivot;
-	int	*arr;
+/*
+* push every element smaller than the pivot with the pivot included into stack_b
+* now stack a contains all elements greater than the pivot
+* and stack b contains all elements lesser than the pivot with the pivot included
+*/
+// void	sort_large(t_stack **a, t_stack **b, int size)
+// {
+// 	int		pivot;
+// 	int		*arr;
 
-	arr = arrayify(*a);
-	pivot = mofm(arr, size);
+// 	arr = arrayify(*a);
+// 	pivot = mofm(arr, size);
+// 	ft_printf("Pivot number is %d\n", pivot);
+// 	free(arr);
+// 	int i = 0;
+// 	while ((++i <= 10))
+// 	{
+// 		if ((*a)->value <= pivot)
+// 			push(b, a, 'b');
+// 		else
+// 			rotate(a, 'a', 0);
+// 		// print_stacks(*a, *b);
+// 	}
+// }
+
+void	sort_large(t_stack **a, t_stack **b)
+{
+	int	median;
+
+	median = get_kth_smallest(*a, (ft_stacksize(*a) - 1) / 2);
+	ft_printf("median: %d\n", median);
+	(void)b;
 }

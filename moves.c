@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/28 16:19:44 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/05 13:30:46 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	swap(t_stack **stack, char stack_let, int ss)
 	(*stack)->value = (*stack)->next->value;
 	(*stack)->next->value = temp;
 	if (stack_let == 'a' && !ss)
-		ft_putendl_fd("sa",1);
+		ft_putendl_fd("sa", 1);
 	else if (stack_let == 'b' && !ss)
-		ft_putendl_fd("sb",1);
+		ft_putendl_fd("sb", 1);
 }
 
 void	ss(t_stack **stack_a, t_stack **stack_b)
@@ -47,11 +47,11 @@ void	push(t_stack **stack1, t_stack **stack2, char stack)
 	if (is_empty((*stack2)))
 		return ;
 	new = ft_newnode((*stack2)->value);
-	if (!(*stack2))
-	{
-		(*stack2) = new;
-		return ;
-	}
+	// if (!(*stack1))
+	// {
+	// 	(*stack1) = new;
+	// 	return ;
+	// }
 	ft_stackadd_top(stack1, new);
 	delete_node(stack2, (*stack2));
 	if (stack == 'a')
@@ -59,6 +59,21 @@ void	push(t_stack **stack1, t_stack **stack2, char stack)
 	else
 		ft_putendl_fd("pb", 1);
 }
+
+// point stack b to stack a
+// point stack a to next
+// void	push(t_stack **push_to, t_stack **push_from, char stack_let)
+// {
+// 	t_stack	*temp;
+
+// 	temp = (*push_to);
+// 	*push_to = (*push_to)->next;
+// 	(*push_from) = temp;
+// 	if (stack_let == 'a')
+// 		ft_putendl_fd("pa", 1);
+// 	else
+// 		ft_putendl_fd("pb", 1);
+// }
 
 /*
 * create a node that points to top of stack

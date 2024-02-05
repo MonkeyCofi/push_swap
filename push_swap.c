@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 02:44:37 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:56:33 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int main(int argc, char **argv)
 		if (ft_stacksize(stack_a) == 3)
 			sort_small_stack(&stack_a);
 		else
-			sort_medium_stack(&stack_a, &stack_b);
+			sort_large(&stack_a, &stack_b);
 	}
 	print_stacks(stack_a, stack_b);
-	ft_printf("stack is sorted\n");
 	clear_stack(&stack_a);
+	clear_stack(&stack_b);
 	exit(EXIT_SUCCESS);
 	(void)argc;
 }

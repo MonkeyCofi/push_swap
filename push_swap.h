@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 02:41:43 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:56:21 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	sort_small_stack(t_stack **stack_a);
 void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b);
 t_stack	*search_node(t_stack *stack, int number);
 void	move_stack(t_stack **a, int largest, int smallest);
+void	sort_large(t_stack **a, t_stack **b);
 
 // stack checkers
 int		is_sorted(t_stack *stack);
@@ -66,5 +67,8 @@ int		get_larger_value(t_stack *stack, int value);
 int		get_median(int *arr, int n);
 int		mofm(int *arr, int n);
 int		*arrayify(t_stack *stack);
+int		partition(int *arr, int left, int right);
+int		quick_select(int *arr, int left, int right, int k);
+int		get_kth_smallest(t_stack *stack, int k);
 
 #endif
