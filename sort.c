@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/06 17:19:20 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/07 03:13:27 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,11 +131,28 @@ void	sort_small_stack(t_stack **stack_a)
 ** anything above the halfpoint would need to rotate to get to the top in the shortest amount of moves
 ** anything below the halfpoint would need to reverse rotate to get to the top in the shortest amount of moves
 */
-void	sort_stack(t_stack **a, t_stack **b)
-{
-	int	median;
-	int	midpoint;
+// void	sort_stack(t_stack **a, t_stack **b)
+// {
+// 	int	median;
+// 	int	midpoint;
 
-	median = get_kth_smallest(*a, ft_stacksize(*a) / 2);
-	midpoint = ft_stacksize(*a) / 2;
+// 	median = get_kth_smallest(*a, ft_stacksize(*a) / 2);
+// 	midpoint = ft_stacksize(*a) / 2;
+	
+// }
+
+void	sort_5(t_stack **a, t_stack **b)
+{
+	while (ft_stacksize(*a) > 3 && !is_sorted(*a))
+	{
+		if ((*a)->value == get_smallest(*a))
+			push(b, a,'b');
+		// else if ((*a)->pos < ft_stacksize(*a) / 2)
+		// 	rotate(a, 'a', 0);
+		else
+			reverse_rotate(a, 'a', 0);
+	}
+	sort_small_stack(a);
+	push(a, b,'b');
+	push(a, b,'b');
 }

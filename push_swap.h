@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/06 12:34:13 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/07 03:12:17 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,8 @@ int		get_kth_smallest(t_stack *stack, int k);
 
 // sort utils
 int		find_smallest_largest(t_stack *stack, int value);
+
+//temp
+void	sort_5(t_stack **a, t_stack **b);
 
 #endif
