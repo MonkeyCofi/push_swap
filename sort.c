@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 20:53:48 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:19:20 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,43 +65,43 @@ void	sort_small_stack(t_stack **stack_a)
 //	}
 //}
 
-void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b)
-{
-	int	smallest;
-	int	largest;
-	int	second_largest;
+// void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b)
+// {
+// 	int	smallest;
+// 	int	largest;
+// 	int	second_largest;
 
-	smallest = get_smallest((*stack_a));
-	largest = get_largest((*stack_a));
-	second_largest = get_second_largest(*stack_a, largest, smallest);
-	if (is_empty(*stack_b))
-	{
-		push(stack_b, stack_a, 'b');
-		push(stack_b, stack_a, 'b');
-	}
-	sort_small_stack(stack_a);
-	while (!is_sorted(*stack_a) || !is_empty(*stack_b))
-	{
-		push(stack_a, stack_b, 'a');
-		if ((*stack_b) && (*stack_b)->value == second_largest && (*stack_a)->value == largest)
-			push(stack_a, stack_b, 'a');
-		move_stack(stack_a, largest, smallest);
-	}
-}
+// 	smallest = get_smallest((*stack_a));
+// 	largest = get_largest((*stack_a));
+// 	second_largest = get_second_largest(*stack_a, largest, smallest);
+// 	if (is_empty(*stack_b))
+// 	{
+// 		push(stack_b, stack_a, 'b');
+// 		push(stack_b, stack_a, 'b');
+// 	}
+// 	sort_small_stack(stack_a);
+// 	while (!is_sorted(*stack_a) || !is_empty(*stack_b))
+// 	{
+// 		push(stack_a, stack_b, 'a');
+// 		if ((*stack_b) && (*stack_b)->value == second_largest && (*stack_a)->value == largest)
+// 			push(stack_a, stack_b, 'a');
+// 		move_stack(stack_a, largest, smallest);
+// 	}
+// }
 
-void	move_stack(t_stack **stack, int largest, int smallest)
-{
-	if (is_sorted(*stack))
-		return ;
-	if ((*stack)->value != largest && (*stack)->value > (*stack)->next->value && (*stack)->value != get_largest(*stack))
-		swap(stack, 'a', 0);
-	else if ((*stack)->value > (*stack)->next->value && (*stack)->next->value != smallest)
-		reverse_rotate(stack, 'a', 0);
-	else
-		rotate(stack, 'a', 0);
-	if ((*stack)->value == largest && (*stack)->next->value == smallest)
-		rotate(stack, 'a', 0);
-}
+// void	move_stack(t_stack **stack, int largest, int smallest)
+// {
+// 	if (is_sorted(*stack))
+// 		return ;
+// 	if ((*stack)->value != largest && (*stack)->value > (*stack)->next->value && (*stack)->value != get_largest(*stack))
+// 		swap(stack, 'a', 0);
+// 	else if ((*stack)->value > (*stack)->next->value && (*stack)->next->value != smallest)
+// 		reverse_rotate(stack, 'a', 0);
+// 	else
+// 		rotate(stack, 'a', 0);
+// 	if ((*stack)->value == largest && (*stack)->next->value == smallest)
+// 		rotate(stack, 'a', 0);
+// }
 
 // void	move_stack(t_stack **a, int largest, int second_largest, int smallest)
 // {
@@ -131,28 +131,11 @@ void	move_stack(t_stack **stack, int largest, int smallest)
 ** anything above the halfpoint would need to rotate to get to the top in the shortest amount of moves
 ** anything below the halfpoint would need to reverse rotate to get to the top in the shortest amount of moves
 */
-void	sort_large(t_stack **a, t_stack **b)
+void	sort_stack(t_stack **a, t_stack **b)
 {
 	int	median;
 	int	midpoint;
 
 	median = get_kth_smallest(*a, ft_stacksize(*a) / 2);
-	ft_printf("The median is %d\n", median);
 	midpoint = ft_stacksize(*a) / 2;
-	int i = 0;
-	while (!is_sorted((*a)) || is_empty(*b))
-	{
-		if ((*a)->value <= median)
-			push(b, a, 'b');
-		// rotate if the position is above the median
-		else
-		{
-			rotate(a, 'a', 0);
-		}
-		// otherwise reverse rotate
-		if (i++ > 10)
-			break ;
-	}
-	(void)b;
-	(void)midpoint;
 }
