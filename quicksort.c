@@ -70,5 +70,6 @@ int main(void)
 	int size = sizeof(a) / sizeof(int);
 	// quicksort(a, 0, size - 1);
 	print_array(a, size);
-	printf("%d\n", !(8 & 1));
+	// figuring out how many chunks to have
+	printf("%d\n", 500 / 4 + (100 % 2));
 }

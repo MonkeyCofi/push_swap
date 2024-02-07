@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 20:43:04 by uwubuntu          #+#    #+#             */
-/*   Updated: 2024/02/05 20:47:32 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:01:56 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,30 @@ int	find_smallest_largest(t_stack *stack, int value)
 		stack = stack->next;
 	}
 	return (largest);
+}
+
+void	update_index(t_stack **a, t_stack **b, int need_b)
+{
+	t_stack	*trav;
+	int		index;
+
+	trav = (*a);
+	index = 0;
+	while (trav)
+	{
+		trav->pos = index;
+		index++;
+		trav = trav->next;
+	}
+	if (need_b)
+	{
+		index = 0;
+		trav = (*b);
+		while (trav)
+		{
+			trav->pos = index;
+			index++;
+			trav = trav->next;
+		}
+	}
 }

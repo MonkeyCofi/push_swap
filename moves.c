@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 19:33:48 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:06:18 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	swap(t_stack **stack, char stack_let, int ss)
 	temp = (*stack)->value;
 	(*stack)->value = (*stack)->next->value;
 	(*stack)->next->value = temp;
+	if (!ss)
+		update_index(stack, NULL, 0);
 	if (stack_let == 'a' && !ss)
 		ft_putendl_fd("sa", 1);
 	else if (stack_let == 'b' && !ss)
@@ -31,6 +33,7 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(stack_a, 'a', 1);
 	swap(stack_b, 'a', 1);
+	update_index(stack_a, stack_b, 1);
 	ft_putendl_fd("ss", 1);
 }
 
@@ -54,6 +57,7 @@ void	push(t_stack **stack1, t_stack **stack2, char stack)
 	// }
 	ft_stackadd_top(stack1, new);
 	delete_node(stack2, (*stack2));
+	update_index(stack1, stack2, 1);
 	if (stack == 'a')
 		ft_putendl_fd("pa", 1);
 	else
@@ -83,6 +87,8 @@ void	reverse_rotate(t_stack **stack, char stack_let, int rrr)
 	(*stack) = iter->next;
 	(*stack)->next = top;
 	iter->next = NULL;
+	if (!rrr)
+		update_index(stack, NULL, 0);
 	if (stack_let == 'a' && !rrr)
 		ft_putendl_fd("rra", 1);
 	else if (stack_let == 'b' && !rrr)
@@ -109,6 +115,8 @@ void	rotate(t_stack **stack, char stack_let, int rr)
 	(*stack) = (*stack)->next;
 	iter->next = top;
 	top->next = NULL;
+	if (!rr)
+		update_index(stack, NULL, 0);
 	if (stack_let == 'a' && !rr)
 		ft_putendl_fd("ra", 1);
 	else if (stack_let == 'b' && !rr)

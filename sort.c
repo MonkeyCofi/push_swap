@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/07 03:13:27 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/07 18:25:21 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,18 +141,59 @@ void	sort_small_stack(t_stack **stack_a)
 	
 // }
 
-void	sort_5(t_stack **a, t_stack **b)
+// void	sort_5(t_stack **a, t_stack **b)
+// {
+// 	while (ft_stacksize(*a) > 3 && !is_sorted(*a))
+// 	{
+// 		if ((*a)->value == get_smallest(*a))
+// 			push(b, a, 'b');
+// 		else if (get_node(*a, get_smallest(*a))->pos < (ft_stacksize(*a) / 2) + (ft_stacksize(*a) % 2))
+// 			rotate(a, 'a', 0);
+// 		else
+// 			reverse_rotate(a, 'a', 0);
+// 	}
+// 	sort_small_stack(a);
+// 	while (!is_empty(*b))
+// 		push(a, b, 'b');
+// }
+
+int	chunk_divider(int stack_size)
 {
-	while (ft_stacksize(*a) > 3 && !is_sorted(*a))
+	int	chunks;
+
+	chunks = 4;
+	while (stack_size / chunks > 100)
+		chunks *= 2;
+	return (chunks);
+}
+
+void	push_chunk(t_stack **a, t_stack **b)
+{
+	t_chunk	c;
+	int		chunk_nums;
+
+	chunk_nums = chunk_divider(ft_stacksize(*a));
+	fill_chunk(*a, &c, chunk_nums);
+	ft_printf("%d > %d\n", ft_stacksize(*a), c.remaining);
+	while (ft_stacksize(*a) > c.remaining)
 	{
-		if ((*a)->value == get_smallest(*a))
-			push(b, a,'b');
-		// else if ((*a)->pos < ft_stacksize(*a) / 2)
-		// 	rotate(a, 'a', 0);
+		if ((*a)->value <= c.pivot)
+			push(b, a, 'b');
+		else if ((*a)->value > c.pivot && (*a)->pos < c.sub_median)
+			rotate(a, 'a', 0);
 		else
 			reverse_rotate(a, 'a', 0);
 	}
-	sort_small_stack(a);
-	push(a, b,'b');
-	push(a, b,'b');
+	ft_printf("%d\n", c.pivot);
+	(void)b;
+}
+
+/*
+** divide the stack into sub-chunks
+** get the value at the ending position of each chunk
+** go through the whole stack to count the amount of values that are lesser than the pivot value
+*/
+void	sort_stack(t_stack **a, t_stack **b)
+{
+	push_chunk(a, b);
 }

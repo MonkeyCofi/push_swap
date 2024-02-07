@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/07 03:12:17 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/07 18:05:07 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ typedef struct s_stack
 	int				pos;
 	int				value;
 }	t_stack;
+
+typedef struct s_chunk
+{
+	int	pivot;
+	int	median;
+	int	sub_median;
+	int	sub_pivot;
+	int	remaining;
+}	t_chunk;
+
 
 int		count_arguments(char **argv);
 void	add_to_stack(t_stack **stack, char **argv);
@@ -74,8 +84,10 @@ int		get_kth_smallest(t_stack *stack, int k);
 
 // sort utils
 int		find_smallest_largest(t_stack *stack, int value);
+void	update_index(t_stack **a, t_stack **b, int need_b);
 
 //temp
 void	sort_5(t_stack **a, t_stack **b);
+void	fill_chunk(t_stack *a, t_chunk *c, int chunk_num);
 
 #endif
