@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/07 18:25:21 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/08 03:12:03 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,21 +126,6 @@ void	sort_small_stack(t_stack **stack_a)
 
 // }
 
-/*
-** divide the size of the list by half
-** anything above the halfpoint would need to rotate to get to the top in the shortest amount of moves
-** anything below the halfpoint would need to reverse rotate to get to the top in the shortest amount of moves
-*/
-// void	sort_stack(t_stack **a, t_stack **b)
-// {
-// 	int	median;
-// 	int	midpoint;
-
-// 	median = get_kth_smallest(*a, ft_stacksize(*a) / 2);
-// 	midpoint = ft_stacksize(*a) / 2;
-	
-// }
-
 // void	sort_5(t_stack **a, t_stack **b)
 // {
 // 	while (ft_stacksize(*a) > 3 && !is_sorted(*a))
@@ -174,7 +159,6 @@ void	push_chunk(t_stack **a, t_stack **b)
 
 	chunk_nums = chunk_divider(ft_stacksize(*a));
 	fill_chunk(*a, &c, chunk_nums);
-	ft_printf("%d > %d\n", ft_stacksize(*a), c.remaining);
 	while (ft_stacksize(*a) > c.remaining)
 	{
 		if ((*a)->value <= c.pivot)
@@ -184,8 +168,6 @@ void	push_chunk(t_stack **a, t_stack **b)
 		else
 			reverse_rotate(a, 'a', 0);
 	}
-	ft_printf("%d\n", c.pivot);
-	(void)b;
 }
 
 /*
@@ -195,5 +177,50 @@ void	push_chunk(t_stack **a, t_stack **b)
 */
 void	sort_stack(t_stack **a, t_stack **b)
 {
-	push_chunk(a, b);
+	int	i;
+
+	i = 0;
+	while (i < chunk_divider(ft_stacksize(*a)))
+	{
+		push_chunk(a, b);
+		i++;
+	}
+	while ((*a)->value != get_smallest(*a))
+	{
+		if ((*a)->next->value == get_smallest(*a))
+		{
+			if ((*b)->next->value == get_largest(*b))
+				ss(a, b);
+			else
+				swap(a, 'a', 0);
+		}
+		else if (get_node(*a, get_smallest(*a))->pos < ft_stacksize(*a) / 2 + (ft_stacksize(*a) % 2))
+		{
+			if ((*b)->value != get_largest(*b))
+				rr(a, b);
+			else
+				rotate(a, 'a', 0);
+		}
+		else if (get_node(*a, get_smallest(*a))->pos < ft_stacksize(*a) / 2 + (ft_stacksize(*a) % 2))
+		{
+			if ((*b)->value != get_largest(*b))
+				rrr(a, b);
+			else
+				reverse_rotate(a, 'a', 0);
+		}
+	}
+	// while (!is_empty(*b))
+	// {
+	// 	// print_stacks(*a, *b);
+	// 	if ((*b)->value == get_largest(*b))
+	// 		push(a, b, 'a');
+	// 	if (get_node(*b, get_largest(*b))->pos < ft_stacksize(*b) / 2)
+	// 	{
+	// 		rotate(b, 'b', 0);
+	// 	}
+	// 	else if (get_node(*b, get_largest(*b))->pos > ft_stacksize(*b) / 2)
+	// 	{
+	// 		reverse_rotate(b, 'b', 0);
+	// 	}
+	// }
 }

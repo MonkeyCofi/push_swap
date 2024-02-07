@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:45 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 19:53:23 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/08 01:23:15 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ void	delete_node(t_stack **stack, t_stack *del)
 
 int	is_empty(t_stack *stack)
 {
-	if (ft_stacksize(stack) < 1)
-		return (1);
-	return (0);
+	if (stack)
+		return (0);
+	return (1);
+	// if (ft_stacksize(stack) < 1)
+	// 	return (1);
+	// return (0);
 }
