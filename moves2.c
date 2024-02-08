@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:16:34 by uwubuntu          #+#    #+#             */
-/*   Updated: 2024/02/07 14:46:09 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/09 02:29:08 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,3 @@ t_stack	*get_node(t_stack *node, int value)
 	}
 	return (NULL);
 }
-
-// void	push_chunk(t_stack **s, t_chunk *c)
-// {
-	
-// }

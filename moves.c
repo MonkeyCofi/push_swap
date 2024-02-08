@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/08 13:58:43 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/09 02:34:00 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ void	rotate(t_stack **stack, char stack_let, int rr)
 	get_lastnode(*stack)->next = top;
 	if (!rr)
 		update_index(stack, NULL, 0);
+	(void)stack_let;
 	if (stack_let == 'a' && !rr)
 		ft_putendl_fd("ra", 1);
 	else

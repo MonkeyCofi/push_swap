@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/08 17:11:08 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/09 02:26:30 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	add_to_stack(&stack_a, argv);
-	push_chunk(&stack_a, &stack_b);
 	if (!is_sorted(stack_a))
 	{
 		if (ft_stacksize(stack_a) == 3)

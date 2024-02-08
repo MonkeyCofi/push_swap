@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/08 17:21:11 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/09 03:00:51 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,20 @@ int	chunk_divider(int stack_size)
 	return (chunks);
 }
 
-void	push_chunk(t_stack **a, t_stack **b)
+void	push_chunk(t_stack **a, t_stack **b, int chunks)
 {
 	t_chunk	c;
-	int		chunk_nums;
 
-	chunk_nums = chunk_divider(ft_stacksize(*a));
-	fill_chunk(*a, &c, chunk_nums);
+	fill_chunk(*a, &c, chunks);
 	while (ft_stacksize(*a) > c.remaining)
 	{
 		if ((*a)->value <= c.pivot)
+		{
 			push(b, a, 'b');
-		// else if ((*a)->value > c.pivot && (*a)->pos < c.sub_median)
-		else if ((*a)->value > c.pivot && (*a)->pos <= c.median)
+		}
+		else if ((*a)->next->value <= c.pivot && get_lastnode(*a)->value <= c.pivot)
+			swap(a, 'a', 0);
+		else if ((*a)->value > c.pivot && get_lastnode(*a)->value > c.pivot)
 			rotate(a, 'a', 0);
 		else
 			reverse_rotate(a, 'a', 0);
@@ -129,7 +130,7 @@ void	sort_chunk(t_stack **a, t_stack **b)
 			push(b, a, 'b');
 			smallest = get_smallest(*a);
 		}
-		if ((*a)->next->value == smallest && get_lastnode(*a)->value == get_larger_value(*a, smallest))
+		else if ((*a)->next->value == smallest && get_lastnode(*a)->value == get_larger_value(*a, smallest))
 			swap(a, 'a', 0);
 		else if (get_node(*a, smallest)->pos <= ft_stacksize(*a) / 2)
 			rotate(a, 'a', 0);
@@ -137,25 +138,20 @@ void	sort_chunk(t_stack **a, t_stack **b)
 			reverse_rotate(a, 'a', 0);
 	}
 	sort_three(a);
+	// sort_small_stack(a, b);
 }
 
-/*
-** divide the stack into sub-chunks
-** get the value at the ending position of each chunk
-** go through the whole stack to count the amount of values that are lesser than the pivot value
-*/
 void	sort_stack(t_stack **a, t_stack **b)
 {
-	int	i;
+	int	chunks;
 
-	i = 0;
-	while (i < chunk_divider(ft_stacksize(*a)))
+	chunks = chunk_divider(ft_stacksize(*a));
+	while (chunks > 1)
 	{
-		push_chunk(a, b);
-		i++;
+		push_chunk(a, b, chunks--);
 	}
-	// sort_chunk(a, b);
-// 	push_largest(a, b);
+	sort_chunk(a, b);
+	push_largest(a, b);
 }
 
 void	push_largest(t_stack **a, t_stack **b)
@@ -174,7 +170,7 @@ void	push_largest(t_stack **a, t_stack **b)
 		{
 			if ((*b)->next->value == largest_b && get_lastnode(*b)->value == get_smaller_value(*b, largest_b))
 				swap(b, 'b', 0);
-			if (get_node(*b, largest_b)->pos <= ft_stacksize(*b) / 2)
+			else if (get_node(*b, largest_b)->pos <= ft_stacksize(*b) / 2)
 				rotate(b, 'b', 0);
 			else if (get_node(*b, largest_b)->pos > ft_stacksize(*b) / 2)
 				reverse_rotate(b, 'b', 0);
