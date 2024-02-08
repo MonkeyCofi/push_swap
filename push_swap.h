@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/08 15:10:40 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/08 16:48:27 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		get_smallest(t_stack *stack);
 int		get_largest(t_stack *stack);
 int		get_second_largest(t_stack *stack, int largest, int smallest);
 int		get_larger_value(t_stack *stack, int value);
+int		get_smaller_value(t_stack *stack, int value);
 
 // median
 // int		get_median(int *arr, int n);

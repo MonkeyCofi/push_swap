@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:12:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/07 18:25:12 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:23:35 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,12 @@ int	get_kth_smallest(t_stack *stack, int k)
 	return (target);
 }
 
-/*
-** stack will be divided into chunks of 4
-** chunks of eight if the stack size is greater than 250
-** set the sub_pivot point ot be the pivot point of each sub chunk
-*/
 void	fill_chunk(t_stack *a, t_chunk *c, int chunk_num)
 {
 	int	chunk_end;
-	int	chunk_size;
 
 	chunk_end = ft_stacksize(a) / chunk_num;
+	c->median = ft_stacksize(a) / 2;
 	c->pivot = get_kth_smallest(a, chunk_end);
 	c->sub_median = chunk_end / 2;
 	c->remaining = 0;
@@ -108,5 +103,4 @@ void	fill_chunk(t_stack *a, t_chunk *c, int chunk_num)
 			c->remaining++;
 		a = a->next;
 	}
-	(void)chunk_size;
 }

@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:14:23 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 02:40:20 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/08 16:49:19 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,6 @@ int	get_largest(t_stack *stack)
 	return (largest_val);
 }
 
-int	get_second_largest(t_stack *stack, int largest, int smallest)
-{
-	int	second;
-
-	second = smallest;
-	while (stack)
-	{
-		if (stack->value > second && stack->value < largest)
-			second = stack->value;
-		stack = stack->next;
-	}
-	return (second);
-}
-
 int	get_larger_value(t_stack *stack, int value)
 {
 	int	target;
@@ -101,4 +87,18 @@ t_stack	*search_node(t_stack *stack, int number)
 		stack = stack->next;
 	}
 	return (NULL);
+}
+
+int	get_smaller_value(t_stack *stack, int value)
+{
+	int	smallest;
+
+	smallest = get_smallest(stack);
+	while (stack)
+	{
+		if (stack->value > smallest && stack->value < value)
+			smallest = stack->value;
+		stack = stack->next;
+	}
+	return (smallest);
 }
