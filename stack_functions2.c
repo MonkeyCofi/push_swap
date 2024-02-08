@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:45 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/08 01:23:15 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:54:21 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,16 @@ void	delete_node(t_stack **stack, t_stack *del)
 	}
 }
 
-//t_stack	*pop(t_stack **stack)
-//{
-//	t_stack	*node;
+t_stack	*pop(t_stack **stack)
+{
+	t_stack	*node;
 
-//	node = ft_newnode((*stack)->value);
-//	if (!node)
-//		return (NULL);
-//	delete_node(stack, (*stack));
-//	return (node);
-//}
+	node = ft_newnode((*stack)->value, 0);
+	if (!node)
+		return (NULL);
+	delete_node(stack, (*stack));
+	return (node);
+}
 
 int	is_empty(t_stack *stack)
 {

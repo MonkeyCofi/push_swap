@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/07 18:05:07 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:10:40 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		count_arguments(char **argv);
 void	add_to_stack(t_stack **stack, char **argv);
 
 // Stack functions
-//t_stack	*pop(t_stack **stack);
+t_stack	*pop(t_stack **stack);
 int		is_empty(t_stack *stack);
 t_stack	*new_lst(void);
 t_stack	*ft_newnode(int content, int index);
@@ -60,12 +60,10 @@ void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 
 // sort
-void	sort_small_stack(t_stack **stack_a);
+void	sort_three(t_stack **stack_a);
+void	sort_small_stack(t_stack **a, t_stack **b);
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 t_stack	*search_node(t_stack *stack, int number);
-// void	sort_medium_stack(t_stack **stack_a, t_stack **stack_b);
-// void	move_stack(t_stack **a, int largest, int smallest);
-// void	sort_large(t_stack **a, t_stack **b);
 
 // stack checkers
 int		is_sorted(t_stack *stack);
@@ -87,7 +85,10 @@ int		find_smallest_largest(t_stack *stack, int value);
 void	update_index(t_stack **a, t_stack **b, int need_b);
 
 //temp
-void	sort_5(t_stack **a, t_stack **b);
+
 void	fill_chunk(t_stack *a, t_chunk *c, int chunk_num);
+void	push_largest(t_stack **a, t_stack **b);
+void	push_chunk(t_stack **a, t_stack **b);
+int		chunk_divider(int stack_size);
 
 #endif
