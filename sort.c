@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/09 03:00:51 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:55:43 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,20 @@ int	chunk_divider(int stack_size)
 void	push_chunk(t_stack **a, t_stack **b, int chunks)
 {
 	t_chunk	c;
+	int		val_dist;
 
 	fill_chunk(*a, &c, chunks);
+	val_dist = closest(*a, c.pivot);
 	while (ft_stacksize(*a) > c.remaining)
 	{
 		if ((*a)->value <= c.pivot)
 		{
 			push(b, a, 'b');
+			val_dist = closest(*a, c.pivot);
 		}
 		else if ((*a)->next->value <= c.pivot && get_lastnode(*a)->value <= c.pivot)
 			swap(a, 'a', 0);
-		else if ((*a)->value > c.pivot && get_lastnode(*a)->value > c.pivot)
+		else if ((*a)->value > c.pivot && val_dist <= c.median)
 			rotate(a, 'a', 0);
 		else
 			reverse_rotate(a, 'a', 0);
@@ -121,8 +124,10 @@ void	push_chunk(t_stack **a, t_stack **b, int chunks)
 void	sort_chunk(t_stack **a, t_stack **b)
 {
 	int	smallest;
+	int	size;
 
 	smallest = get_smallest(*a);
+	size = ft_stacksize(*a);
 	while (ft_stacksize(*a) > 3)
 	{
 		if ((*a)->value == smallest)
@@ -138,6 +143,8 @@ void	sort_chunk(t_stack **a, t_stack **b)
 			reverse_rotate(a, 'a', 0);
 	}
 	sort_three(a);
+	while (ft_stacksize(*a) < size)
+		push(a, b, 'a');
 	// sort_small_stack(a, b);
 }
 
@@ -169,11 +176,22 @@ void	push_largest(t_stack **a, t_stack **b)
 		else
 		{
 			if ((*b)->next->value == largest_b && get_lastnode(*b)->value == get_smaller_value(*b, largest_b))
+			{
 				swap(b, 'b', 0);
+			}
 			else if (get_node(*b, largest_b)->pos <= ft_stacksize(*b) / 2)
+			{
 				rotate(b, 'b', 0);
+			}
 			else if (get_node(*b, largest_b)->pos > ft_stacksize(*b) / 2)
+			{
 				reverse_rotate(b, 'b', 0);
+			}
 		}
 	}
 }
+
+// void	push_largest(t_stack **a, t_stack **b)
+// {
+	
+// }

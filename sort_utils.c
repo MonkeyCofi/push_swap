@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 20:43:04 by uwubuntu          #+#    #+#             */
-/*   Updated: 2024/02/07 11:01:56 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:54:11 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,23 @@ void	update_index(t_stack **a, t_stack **b, int need_b)
 			trav = trav->next;
 		}
 	}
+}
+
+int	closest(t_stack *stack, int value)
+{
+	int	stack_size;
+	int	distance;
+
+	stack_size = ft_stacksize(stack);
+	distance = 0;
+	while (stack)
+	{
+		if (stack->value < value)
+			break ;
+		distance++;
+		stack = stack->next;
+	}
+	if (distance > stack_size / 2)
+		return (stack_size - distance);
+	return (distance);
 }

@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/09 02:26:30 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:56:33 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main(int argc, char **argv)
 		else
 			sort_stack(&stack_a, &stack_b);
 	}
-	// print_stacks(stack_a, stack_b);
 	if (is_sorted(stack_a))
 		ft_printf("Stack is sorted\n");
 	else

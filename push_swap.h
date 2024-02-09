@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:05:57 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/09 00:57:50 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:17:20 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ void	fill_chunk(t_stack *a, t_chunk *c, int chunk_num);
 void	push_largest(t_stack **a, t_stack **b);
 void	push_chunk(t_stack **a, t_stack **b, int chunks);
 int		chunk_divider(int stack_size);
+int		closest(t_stack *stack, int value);
 
 #endif
