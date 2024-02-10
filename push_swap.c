@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:14 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/09 15:56:33 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/10 22:28:25 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int main(int argc, char **argv)
 		else
 			sort_stack(&stack_a, &stack_b);
 	}
-	if (is_sorted(stack_a))
-		ft_printf("Stack is sorted\n");
-	else
-		ft_printf("Stack is not sorted\n");
+	print_stacks(stack_a, stack_b);
+	//if (is_sorted(stack_a))
+	//	ft_printf("Stack is sorted\n");
+	//else
+	//	ft_printf("Stack is not sorted\n");
 	clear_stack(&stack_a);
 	clear_stack(&stack_b);
 	exit(EXIT_SUCCESS);

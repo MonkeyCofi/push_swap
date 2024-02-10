@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/09 15:55:43 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/10 22:12:09 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,58 @@ void	sort_three(t_stack **stack_a)
 
 void	sort_small_stack(t_stack **a, t_stack **b)
 {
+	int	smallest;
+
+	smallest = get_smallest(*a);
 	while (ft_stacksize(*a) > 3 && !is_sorted(*a))
 	{
-		if ((*a)->value == get_smallest(*a))
+		if ((*a)->value == smallest)
+		{
 			push(b, a, 'b');
-		else if (get_node(*a, get_smallest(*a))->pos <= (ft_stacksize(*a) / 2))
+			smallest = get_smallest(*a);
+		}
+		else if ((*a)->next->value == smallest && get_larger_value(*a, smallest))
+			swap(a, 'a', 0);
+		else if (get_node(*a, smallest)->pos <= (ft_stacksize(*a) / 2))
 			rotate(a, 'a', 0);
 		else
 			reverse_rotate(a, 'a', 0);
 	}
 	sort_three(a);
 	while (!is_empty(*b))
-		push(a, b, 'b');
+		push(a, b, 'a');
+}
+
+/*
+** push elements from smallest to largest
+** so that when pushed back, they will be sorted
+** three largest elements will stay in stack a
+** and will be sorted using 3 sort
+*/
+void	sort_chunk(t_stack **a, t_stack **b)
+{
+	int	smallest;
+	int	size;
+
+	smallest = get_smallest(*a);
+	size = ft_stacksize(*a);
+	while (ft_stacksize(*a) > 3)
+	{
+		if ((*a)->value == smallest)
+		{
+			push(b, a, 'b');
+			smallest = get_smallest(*a);
+		}
+		else if ((*a)->next->value == smallest && get_lastnode(*a)->value == get_larger_value(*a, smallest))
+			swap(a, 'a', 0);
+		else if (get_node(*a, smallest)->pos <= ft_stacksize(*a) / 2)
+			rotate(a, 'a', 0);
+		else
+			reverse_rotate(a, 'a', 0);
+	}
+	sort_three(a);
+	while (ft_stacksize(*a) < size)
+		push(a, b, 'a');
 }
 
 int	chunk_divider(int stack_size)
@@ -86,68 +126,6 @@ void	push_chunk(t_stack **a, t_stack **b, int chunks)
 	}
 }
 
-// void	push_chunk(t_stack **a, t_stack **b)
-// {
-// 	t_chunk	c;
-// 	int		smallest;
-// 	int		chunk_nums;
-
-// 	chunk_nums = chunk_divider(ft_stacksize(*a));
-// 	fill_chunk(*a, &c, chunk_nums);
-// 	smallest = get_smallest(*a);
-// 	while (ft_stacksize(*a) > c.remaining)
-// 	{
-// 		if ((*a)->value == smallest)
-// 		{
-// 			push(b, a, 'b');
-// 			smallest = get_smallest(*a);
-// 		}
-// 		else if (get_node(*a, smallest)->pos <= c.median)
-// 			rotate(a, 'a', 0);
-// 		else
-// 			reverse_rotate(a, 'a', 0);
-// 		// if ((*a)->value <= c.pivot)
-// 		// 	push(b, a, 'b');
-// 		// else if ((*a)->value > c.pivot && (*a)->pos < c.sub_median)
-// 		// 	rotate(a, 'a', 0);
-// 		// else
-// 		// 	reverse_rotate(a, 'a', 0);
-// 	}
-// }
-
-/*
-** push elements from smallest to largest
-** so that when pushed back, they will be sorted
-** three largest elements will stay in stack a
-** and will be sorted using 3 sort
-*/
-void	sort_chunk(t_stack **a, t_stack **b)
-{
-	int	smallest;
-	int	size;
-
-	smallest = get_smallest(*a);
-	size = ft_stacksize(*a);
-	while (ft_stacksize(*a) > 3)
-	{
-		if ((*a)->value == smallest)
-		{
-			push(b, a, 'b');
-			smallest = get_smallest(*a);
-		}
-		else if ((*a)->next->value == smallest && get_lastnode(*a)->value == get_larger_value(*a, smallest))
-			swap(a, 'a', 0);
-		else if (get_node(*a, smallest)->pos <= ft_stacksize(*a) / 2)
-			rotate(a, 'a', 0);
-		else
-			reverse_rotate(a, 'a', 0);
-	}
-	sort_three(a);
-	while (ft_stacksize(*a) < size)
-		push(a, b, 'a');
-	// sort_small_stack(a, b);
-}
-
 void	sort_stack(t_stack **a, t_stack **b)
 {
 	int	chunks;
@@ -158,6 +136,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 		push_chunk(a, b, chunks--);
 	}
 	sort_chunk(a, b);
+	//push_chunk(a, b, 2);
 	push_largest(a, b);
 }
 
@@ -176,22 +155,11 @@ void	push_largest(t_stack **a, t_stack **b)
 		else
 		{
 			if ((*b)->next->value == largest_b && get_lastnode(*b)->value == get_smaller_value(*b, largest_b))
-			{
 				swap(b, 'b', 0);
-			}
 			else if (get_node(*b, largest_b)->pos <= ft_stacksize(*b) / 2)
-			{
 				rotate(b, 'b', 0);
-			}
 			else if (get_node(*b, largest_b)->pos > ft_stacksize(*b) / 2)
-			{
 				reverse_rotate(b, 'b', 0);
-			}
 		}
 	}
 }
-
-// void	push_largest(t_stack **a, t_stack **b)
-// {
-	
-// }
