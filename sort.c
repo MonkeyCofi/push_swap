@@ -109,22 +109,53 @@ void	push_chunk(t_stack **a, t_stack **b, int chunks)
 	int		val_dist;
 
 	fill_chunk(*a, &c, chunks);
+	ft_printf("Sub-median: %d\n", c.sub_median);
 	val_dist = closest(*a, c.pivot);
 	while (ft_stacksize(*a) > c.remaining)
 	{
-		if ((*a)->value <= c.pivot)
+		if ((*a)->value <= c.pivot || get_lastnode(*a)->value <= c.pivot)
 		{
+			if ((get_lastnode(*a)->value <= c.pivot && (*a)->value > c.pivot) || val_dist > c.median)
+				reverse_rotate(a, 'a', 0);
 			push(b, a, 'b');
-			val_dist = closest(*a, c.pivot);
 		}
-		else if ((*a)->next->value <= c.pivot && get_lastnode(*a)->value <= c.pivot)
-			swap(a, 'a', 0);
-		else if ((*a)->value > c.pivot && val_dist <= c.median)
-			rotate(a, 'a', 0);
-		else
-			reverse_rotate(a, 'a', 0);
+		else if ((*a)->value > c.pivot)
+		{
+			if ((*b) && (*b)->value <= c.sub_median)
+				rr(a, b);
+			else
+			{
+				rotate(a, 'a', 0);
+			}
+		}
+		// if ((*a)->value <= c.pivot)
+		// {
+		// 	push(b, a, 'b');
+		// 	val_dist = closest(*a, c.pivot);
+		// }
+		// else if ((*b) && (*b)->value <= c.sub_median && (*a)->value > c.pivot && val_dist <= c.median)
+		// {
+		// 	rr(a, b);
+		// }
+		// else if ((*a)->next->value <= c.pivot && get_lastnode(*a)->value <= c.pivot)
+		// 	swap(a, 'a', 0);
+		// else if ((*a)->value > c.pivot && val_dist <= c.median)
+		// {
+		// 	rotate(a, 'a', 0);
+		// }
+		// else
+		// 	reverse_rotate(a, 'a', 0);
 	}
 }
+
+// void	push_chunk(t_stack **a, t_stack **b, int chunks)
+// {
+// 	t_chunk	chunk;
+// 	int		val_dist;
+//
+// 	fill_chunk(*a, &chunk, chunks);
+// 	val_dist = closest(*a, chunk.pivot);
+// }
 
 void	sort_stack(t_stack **a, t_stack **b)
 {
@@ -135,8 +166,9 @@ void	sort_stack(t_stack **a, t_stack **b)
 	{
 		push_chunk(a, b, chunks--);
 	}
+	push_chunk(a, b, 2);
 	sort_chunk(a, b);
-	//push_chunk(a, b, 2);
+	// print_stacks(*a, *b);
 	push_largest(a, b);
 }
 
@@ -163,3 +195,23 @@ void	push_largest(t_stack **a, t_stack **b)
 		}
 	}
 }
+
+/*
+ * top and bottom of stack a will contain the largest values
+ * top of stack b will contain upper bounds of the middle values
+ * bottom of stack b will contain lower bounds of middle values
+ * and the smallest values
+ * */
+
+/*
+ * push all values from middle chunks first
+ * */
+// void	push_back(t_stack **a, t_stack **b, int start_pos, int end_pos)
+// {
+	// int	val1;
+	// int	val2;
+
+	// val1 = get_kth_snallest(*b, start_pos);
+	// val2 = get_kth_snallest(*b, end_pos);
+// 	while ()
+// }

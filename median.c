@@ -95,7 +95,7 @@ void	fill_chunk(t_stack *a, t_chunk *c, int chunk_num)
 	chunk_end = ft_stacksize(a) / chunk_num;
 	c->pivot = get_kth_smallest(a, chunk_end);
 	c->median = ft_stacksize(a) / 2;
-	c->sub_median = chunk_end / 2;
+	c->sub_median = get_kth_smallest(a, chunk_end / 2);
 	c->remaining = 0;
 	while (a)
 	{

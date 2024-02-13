@@ -131,9 +131,8 @@ void	rotate(t_stack **stack, char stack_let, int rr)
 	get_lastnode(*stack)->next = top;
 	if (!rr)
 		update_index(stack, NULL, 0);
-	(void)stack_let;
 	if (stack_let == 'a' && !rr)
 		ft_putendl_fd("ra", 1);
-	else
+	else if (stack_let == 'b' && !rr)
 		ft_putendl_fd("rb", 1);
 }

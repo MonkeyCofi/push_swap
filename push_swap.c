@@ -29,11 +29,11 @@ int main(int argc, char **argv)
 		else
 			sort_stack(&stack_a, &stack_b);
 	}
-	print_stacks(stack_a, stack_b);
-	//if (is_sorted(stack_a))
-	//	ft_printf("Stack is sorted\n");
-	//else
-	//	ft_printf("Stack is not sorted\n");
+	// print_stacks(stack_a, stack_b);
+	if (is_sorted(stack_a))
+		ft_printf("Stack is sorted\n");
+	else
+		ft_printf("Stack is not sorted\n");
 	clear_stack(&stack_a);
 	clear_stack(&stack_b);
 	exit(EXIT_SUCCESS);
