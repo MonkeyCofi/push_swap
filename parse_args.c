@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:40 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/05 19:31:14 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:23:57 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	count_arguments(char **argv)
 	while (argv[i])
 	{
 		j = 0;
-		nums = ft_split(argv[i++], " \"");
+		nums = ft_split(argv[i++], ' ');
 		if (!nums)
 			exit(EXIT_FAILURE);
 		while (nums[j])
@@ -149,7 +149,7 @@ void	add_to_stack(t_stack **stack, char **argv)
 	while (argv[i])
 	{
 		j = 0;
-		nums = ft_split(argv[i++], " ");
+		nums = ft_split(argv[i++], ' ');
 		if (!nums)
 		{
 			clear_stack(stack);

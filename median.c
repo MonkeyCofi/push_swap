@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   median.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:12:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/09 01:37:21 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:24:27 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,4 @@ void	fill_chunk(t_stack *a, t_chunk *c, int chunk_num)
 			c->remaining++;
 		a = a->next;
 	}
-	// int	chunk_end;
-
-	// chunk_end = ft_stacksize(a) / chunk_num;
-	// c->median = ft_stacksize(a) / 2;
-	// c->pivot = get_kth_smallest(a, chunk_end);
-	// c->sub_median = chunk_end / 2;
-	// c->remaining = 0;
-	// while (a)
-	// {
-	// 	if (a->value > c->pivot)
-	// 		c->remaining++;
-	// 	a = a->next;
-	// }
 }

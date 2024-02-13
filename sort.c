@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/10 22:12:09 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:49:33 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ void	push_chunk(t_stack **a, t_stack **b, int chunks)
 	int		val_dist;
 
 	fill_chunk(*a, &c, chunks);
-	ft_printf("Sub-median: %d\n", c.sub_median);
 	val_dist = closest(*a, c.pivot);
 	while (ft_stacksize(*a) > c.remaining)
 	{
@@ -124,38 +123,10 @@ void	push_chunk(t_stack **a, t_stack **b, int chunks)
 			if ((*b) && (*b)->value <= c.sub_median)
 				rr(a, b);
 			else
-			{
 				rotate(a, 'a', 0);
-			}
 		}
-		// if ((*a)->value <= c.pivot)
-		// {
-		// 	push(b, a, 'b');
-		// 	val_dist = closest(*a, c.pivot);
-		// }
-		// else if ((*b) && (*b)->value <= c.sub_median && (*a)->value > c.pivot && val_dist <= c.median)
-		// {
-		// 	rr(a, b);
-		// }
-		// else if ((*a)->next->value <= c.pivot && get_lastnode(*a)->value <= c.pivot)
-		// 	swap(a, 'a', 0);
-		// else if ((*a)->value > c.pivot && val_dist <= c.median)
-		// {
-		// 	rotate(a, 'a', 0);
-		// }
-		// else
-		// 	reverse_rotate(a, 'a', 0);
 	}
 }
-
-// void	push_chunk(t_stack **a, t_stack **b, int chunks)
-// {
-// 	t_chunk	chunk;
-// 	int		val_dist;
-//
-// 	fill_chunk(*a, &chunk, chunks);
-// 	val_dist = closest(*a, chunk.pivot);
-// }
 
 void	sort_stack(t_stack **a, t_stack **b)
 {
@@ -163,12 +134,9 @@ void	sort_stack(t_stack **a, t_stack **b)
 
 	chunks = chunk_divider(ft_stacksize(*a));
 	while (chunks > 1)
-	{
 		push_chunk(a, b, chunks--);
-	}
 	push_chunk(a, b, 2);
 	sort_chunk(a, b);
-	// print_stacks(*a, *b);
 	push_largest(a, b);
 }
 
