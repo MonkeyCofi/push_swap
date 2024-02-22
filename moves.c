@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:07 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/13 11:16:14 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:31:38 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	rotate(t_stack **stack, char stack_let, int rr)
 	top = pop(stack);
 	get_lastnode(*stack)->next = top;
 	if (!rr)
-		update_index(stack, NULL, 0);
+		update_index(stack, NULL, 0);	
 	if (stack_let == 'a' && !rr)
 		ft_putendl_fd("ra", 1);
 	else if (stack_let == 'b' && !rr)

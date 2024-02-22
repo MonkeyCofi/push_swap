@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 19:04:50 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/13 19:16:34 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:06:04 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,6 @@ int main(int argc, char **argv)
 		exec_move(move, &a, &b);
 		move = get_next_line(STDIN_FILENO);
 	}
+	if (is_sorted(a))
+		ft_printf("OK\n");
 }

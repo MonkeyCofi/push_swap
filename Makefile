@@ -21,8 +21,8 @@ $(LIBFT):
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJS) $(LIBFT)
-	cc checker.c $(OBJS) $(LIBFT) -o checker 
+bonus: $(SRCS_BONUS) $(LIBFT)
+	cc checker.c $(OBJS) $(LIBFT) -o checker
 
 #$(NAME): $(OBJS) $(LIBFT)
 #	cc $(CFLAGS) $(LIBFT) $^ -o $(NAME)
