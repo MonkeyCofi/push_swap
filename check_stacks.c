@@ -108,16 +108,3 @@ t_stack	*search_node(t_stack *stack, int number)
 	return (NULL);
 }
 
-int	get_smaller_value(t_stack *stack, int value)
-{
-	int	smallest;
-
-	smallest = get_smallest(stack);
-	while (stack)
-	{
-		if (stack->value > smallest && stack->value < value)
-			smallest = stack->value;
-		stack = stack->next;
-	}
-	return (smallest);
-}

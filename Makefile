@@ -1,9 +1,11 @@
 NAME = push_swap
 
 SRCS = push_swap.c parse_args.c stack_functions.c stack_functions2.c moves.c sort.c check_stacks.c \
-		median.c moves2.c sort_utils.c
+		median.c moves2.c sort_utils.c check_stacks2.c
 
-SRCS_BONUS = checker.c
+BON_SRCS = checker.c
+
+BON_OBJ = $(SRCS_BONUS:.c=.o)
 
 LIBFT_DIR = ./libft/
 
@@ -21,8 +23,8 @@ $(LIBFT):
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@
 
-bonus: $(SRCS_BONUS) $(LIBFT)
-	cc checker.c $(OBJS) $(LIBFT) -o checker
+ bonus: $(BON_OBJ) $(OBJS) $(LIBFT)
+	cc checker.c $(BON_OBJ) $(OBJS) $(LIBFT) -o checker
 
 #$(NAME): $(OBJS) $(LIBFT)
 #	cc $(CFLAGS) $(LIBFT) $^ -o $(NAME)
@@ -39,3 +41,5 @@ fclean: clean
 	rm -f push_swap
 
 re: fclean all
+
+.PHONY: all clean re fclean

@@ -29,13 +29,3 @@ void	rrr(t_stack **stack_a, t_stack **stack_b)
 	ft_putendl_fd("rrr", 1);
 }
 
-t_stack	*get_node(t_stack *node, int value)
-{
-	while (node)
-	{
-		if (node->value == value)
-			return (node);
-		node = node->next;
-	}
-	return (NULL);
-}

@@ -53,4 +53,8 @@ int main(int argc, char **argv)
 	}
 	if (is_sorted(a))
 		ft_printf("OK\n");
+	else 
+	{
+		ft_printf("KO\n");
+	}
 }

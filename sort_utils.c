@@ -61,7 +61,7 @@ int	closest(t_stack *stack, int value)
 	distance = 0;
 	while (stack)
 	{
-		if (stack->value < value)
+		if (stack->value <= value)
 			break ;
 		distance++;
 		stack = stack->next;
@@ -69,4 +69,46 @@ int	closest(t_stack *stack, int value)
 	if (distance > stack_size / 2)
 		return (stack_size - distance);
 	return (distance);
+}
+
+
+int	chunk_divider(int stack_size)
+{
+	int	chunks;
+
+	chunks = 2;
+	while (stack_size / chunks >= 50)
+		chunks *= 2;
+	if (chunks > 8)
+		chunks = 8;
+	return (chunks);
+}
+
+void	push_chunk(t_stack **a, t_stack **b, int chunks)
+{
+	t_chunk	c;
+	int		val_dist;
+
+	fill_chunk(*a, &c, chunks);
+	val_dist = closest(*a, c.pivot);
+	while (ft_stacksize(*a) > c.remaining)
+	{
+		if ((*a)->value <= c.pivot || get_lastnode(*a)->value <= c.pivot)
+		{
+			// if ((get_lastnode(*a)->value <= c.pivot && (*a)->value > c.pivot) || val_dist > c.median)
+			if ((get_lastnode(*a)->value <= c.pivot && (*a)->value > c.pivot))
+				reverse_rotate(a, 'a', 0);
+			val_dist = closest(*a, c.pivot);
+			push(b, a, 'b');
+		}
+		else if ((*a)->value > c.pivot)
+		{
+			if ((*b) && (*b)->value <= c.sub_median)
+				rr(a, b);
+			else if (val_dist > c.median)
+				reverse_rotate(a, 'a', 0);
+			else
+				rotate(a, 'a', 0);
+		}
+	}
 }

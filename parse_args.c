@@ -159,6 +159,9 @@ void	add_to_stack(t_stack **stack, char **argv)
 		{
 			is_number(nums[j], nums, stack);
 			node = ft_newnode(ft_atoi(nums[j++]), index++);
+			if ((node->value == 0 || node->value == -1) \
+				&& ft_strlen(nums[j - 1]) > 2)
+				error_return(stack, node, nums);
 			check_for_duplicate(stack, node, nums);
 			ft_stackadd_back(stack, node);
 		}

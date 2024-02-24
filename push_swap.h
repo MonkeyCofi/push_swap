@@ -35,6 +35,7 @@ typedef struct s_chunk
 
 int		count_arguments(char **argv);
 void	add_to_stack(t_stack **stack, char **argv);
+void	error_return(t_stack **stack, t_stack *node, char **args);
 
 // Stack functions
 t_stack	*pop(t_stack **stack);

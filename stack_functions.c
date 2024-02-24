@@ -61,6 +61,8 @@ int	ft_stacksize(t_stack *lst)
 	return (size);
 }
 
+
+/* temp function for printing stacks*/
 void	print_stacks(t_stack *stack1, t_stack *stack2)
 {
 	while (stack1 || stack2)
@@ -85,6 +87,7 @@ void	print_stacks(t_stack *stack1, t_stack *stack2)
 	ft_printf("%-15c%c", 'a', 'b');
 	ft_printf("\n\n");
 }
+/* temp function for printing stacks*/
 
 t_stack	*get_lastnode(t_stack *stack)
 {
