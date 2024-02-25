@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 18:32:09 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/26 11:39:46 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:24:35 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*str_op(char *str, long *flag)
 	return (str);
 }
 
-int	do_atoi(const char *str, long res, int flag)
+int	do_atoi(const char *str, int res, int flag)
 {
 	int		i;
 	int		max_left;
@@ -79,7 +79,7 @@ int	do_atoi(const char *str, long res, int flag)
 
 int	ft_atoi(const char *str)
 {
-	long	res;
+	int		res;
 	long	n_flag;
 
 	n_flag = 1;

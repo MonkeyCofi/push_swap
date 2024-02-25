@@ -6,13 +6,13 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:14:37 by pipolint          #+#    #+#             */
-/*   Updated: 2024/01/24 12:15:09 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:27:19 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(int value)
+t_list	*ft_lstnew(void *value)
 {
 	t_list	*node;
 
