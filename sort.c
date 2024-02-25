@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:49:35 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/13 18:49:33 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/25 13:50:59 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	sort_small_stack(t_stack **a, t_stack **b)
 			push(b, a, 'b');
 			smallest = get_smallest(*a);
 		}
-		else if ((*a)->next->value == smallest && get_larger_value(*a, smallest))
+		else if ((*a)->next->value == smallest \
+			&& get_larger_value(*a, smallest))
 			swap(a, 'a', 0);
 		else if (get_node(*a, smallest)->pos <= (ft_stacksize(*a) / 2))
 			rotate(a, 'a', 0);
@@ -79,7 +80,8 @@ void	sort_chunk(t_stack **a, t_stack **b)
 			push(b, a, 'b');
 			smallest = get_smallest(*a);
 		}
-		else if ((*a)->next->value == smallest && get_lastnode(*a)->value == get_larger_value(*a, smallest))
+		else if ((*a)->next->value == smallest \
+			&& get_lastnode(*a)->value == get_larger_value(*a, smallest))
 			swap(a, 'a', 0);
 		else if (get_node(*a, smallest)->pos <= ft_stacksize(*a) / 2)
 			rotate(a, 'a', 0);
@@ -117,7 +119,8 @@ void	push_largest(t_stack **a, t_stack **b)
 		}
 		else
 		{
-			if ((*b)->next->value == largest_b && get_lastnode(*b)->value == get_smaller_value(*b, largest_b))
+			if ((*b)->next->value == largest_b \
+				&& get_lastnode(*b)->value == get_smaller_value(*b, largest_b))
 				swap(b, 'b', 0);
 			else if (get_node(*b, largest_b)->pos <= ft_stacksize(*b) / 2)
 				rotate(b, 'b', 0);

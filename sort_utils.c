@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 20:43:04 by uwubuntu          #+#    #+#             */
-/*   Updated: 2024/02/09 11:54:11 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/25 13:49:47 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	find_smallest_largest(t_stack *stack, int value)
 	while (stack)
 	{
 		if (stack->value > value && stack->value < largest)
-			largest = stack->value;	// if the value is greater than value but lesser than largest
+			largest = stack->value;
 		stack = stack->next;
 	}
 	return (largest);
@@ -71,7 +71,6 @@ int	closest(t_stack *stack, int value)
 	return (distance);
 }
 
-
 int	chunk_divider(int stack_size)
 {
 	int	chunks;
@@ -95,7 +94,6 @@ void	push_chunk(t_stack **a, t_stack **b, int chunks)
 	{
 		if ((*a)->value <= c.pivot || get_lastnode(*a)->value <= c.pivot)
 		{
-			// if ((get_lastnode(*a)->value <= c.pivot && (*a)->value > c.pivot) || val_dist > c.median)
 			if ((get_lastnode(*a)->value <= c.pivot && (*a)->value > c.pivot))
 				reverse_rotate(a, 'a', 0);
 			val_dist = closest(*a, c.pivot);

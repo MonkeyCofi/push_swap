@@ -1,3 +1,0 @@
-if the last number is the second smallest element AND the next number is the smallest number; swap
-	instead of rotate
-This will save atleast one move

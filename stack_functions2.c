@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_functions2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:40:45 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/08 13:54:21 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/25 13:49:03 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,4 @@ int	is_empty(t_stack *stack)
 	if (stack)
 		return (0);
 	return (1);
-	// if (ft_stacksize(stack) < 1)
-	// 	return (1);
-	// return (0);
 }

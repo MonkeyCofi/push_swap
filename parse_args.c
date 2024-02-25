@@ -6,7 +6,7 @@
 /*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:07:40 by pipolint          #+#    #+#             */
-/*   Updated: 2024/02/13 12:23:57 by pipolint         ###   ########.fr       */
+/*   Updated: 2024/02/25 14:10:50 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,27 +102,6 @@ char	*join_args(char **argv)
 	}
 	return (joined);
 }
-//char	*join_args(char **argv)
-//{
-//	char	*joined;
-//	int		i;
-
-//	i = 1;
-//	joined = NULL;
-//	while (argv[i])
-//	{
-//		if (i == 1)
-//			joined = ft_strjoin(argv[i], "");
-//		else
-//		{
-//			joined = ft_strjoin(joined, " ");
-//			free(joined);
-//			joined = ft_strjoin(joined, argv[i]);
-//		}
-//		i++;
-//	}
-//	return (joined);
-//}
 
 /*
 * go through each argument
@@ -138,7 +117,7 @@ char	*join_args(char **argv)
 */
 void	add_to_stack(t_stack **stack, char **argv)
 {
-	t_stack	*node;
+	t_stack	*n;
 	char	**nums;
 	int		i;
 	int		j;
@@ -151,44 +130,16 @@ void	add_to_stack(t_stack **stack, char **argv)
 		j = 0;
 		nums = ft_split(argv[i++], ' ');
 		if (!nums)
-		{
-			clear_stack(stack);
-			exit(EXIT_FAILURE);
-		}
+			error_return(stack, NULL, nums);
 		while (nums[j])
 		{
 			is_number(nums[j], nums, stack);
-			node = ft_newnode(ft_atoi(nums[j++]), index++);
-			if ((node->value == 0 || node->value == -1) \
-				&& ft_strlen(nums[j - 1]) > 2)
-				error_return(stack, node, nums);
-			check_for_duplicate(stack, node, nums);
-			ft_stackadd_back(stack, node);
+			n = ft_newnode(ft_atoi(nums[j++]), index++);
+			if ((n->value == 0 || n->value == -1) && ft_strlen(nums[j - 1]) > 2)
+				error_return(stack, n, nums);
+			check_for_duplicate(stack, n, nums);
+			ft_stackadd_back(stack, n);
 		}
 		ft_free_split(nums);
 	}
 }
-
-//void	add_to_stack(t_stack **stack, char **argv)
-//{
-//	t_stack	*node;
-//	char	**nums;
-//	int		i;
-//	char	*str;
-
-//	i = 0;
-//	str = join_args(argv);
-//	ft_printf("Str: %s\n", str);
-//	nums = ft_split(str, " ");
-//	while (nums[i])
-//	{
-//		if (is_number(nums[i], nums, stack))
-//		{
-//			node = ft_newnode(ft_atoi(nums[i]));
-//			check_for_duplicate(stack, node, nums);
-//			ft_stackadd_back(stack, node);
-//		}
-//		i++;
-//	}
-//	ft_free_split(nums);
-//}

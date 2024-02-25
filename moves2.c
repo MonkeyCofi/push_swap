@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   moves2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:16:34 by uwubuntu          #+#    #+#             */
-/*   Updated: 2024/02/09 02:29:08 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2024/02/25 14:06:26 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
@@ -28,4 +27,3 @@ void	rrr(t_stack **stack_a, t_stack **stack_b)
 	update_index(stack_a, stack_b, 1);
 	ft_putendl_fd("rrr", 1);
 }
-
